@@ -1,0 +1,4 @@
+interface:
+  display_name: "SAE"
+  short_description: "Polish SCI manuscripts with precise, restrained edits"
+  default_prompt: "Use $sae to perform standard academic editing on this SCI manuscript while preserving its scientific meaning."
