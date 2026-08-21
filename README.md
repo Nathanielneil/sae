@@ -134,11 +134,19 @@ Chinese instructions work too:
 
 ## Where SAE sits
 
-```text
-Light proofreading        SAE                         Intensive rewriting
-grammar & typos       ─── standard academic edit ───  restructure the argument
-                              ▲
-                  clarity + fidelity + restraint
+```mermaid
+flowchart LR
+    A("Light proofreading<br/>Grammar · spelling · punctuation")
+    B(["SAE<br/>Clarity · fidelity · restraint"])
+    C("Intensive rewriting<br/>Structure · argument · content")
+
+    A --> B --> C
+
+    classDef edge fill:#f8fafc,stroke:#cbd5e1,color:#334155,stroke-width:1px;
+    classDef sae fill:#0f766e,stroke:#5eead4,color:#ffffff,stroke-width:2px;
+    class A,C edge;
+    class B sae;
+    linkStyle default stroke:#94a3b8,stroke-width:2px;
 ```
 
 SAE supports titles, abstracts, manuscript sections, full papers, figure captions, cover letters, and responses to reviewers. It does **not** replace peer review, fact-checking, translation, statistical review, or substantive scientific rewriting.

@@ -127,11 +127,19 @@ cp -R skills/sae "${CODEX_HOME:-$HOME/.codex}/skills/sae"
 
 ## SAE 的定位
 
-```text
-基础校对                  SAE                         深度重写
-语法与拼写           ─── 标准学术润色 ───           重组论证结构
-                           ▲
-                  清晰度 + 忠实度 + 克制
+```mermaid
+flowchart LR
+    A("基础校对<br/>语法 · 拼写 · 标点")
+    B(["SAE<br/>清晰 · 忠实 · 克制"])
+    C("深度重写<br/>结构 · 论证 · 内容")
+
+    A --> B --> C
+
+    classDef edge fill:#f8fafc,stroke:#cbd5e1,color:#334155,stroke-width:1px;
+    classDef sae fill:#0f766e,stroke:#5eead4,color:#ffffff,stroke-width:2px;
+    class A,C edge;
+    class B sae;
+    linkStyle default stroke:#94a3b8,stroke-width:2px;
 ```
 
 SAE 可处理标题、摘要、论文各章节、完整论文、图注、投稿信和审稿回复。它不能替代同行评审、事实核查、翻译、统计审查或实质性科学改写。
