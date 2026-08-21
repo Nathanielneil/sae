@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="269" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">SAE — Standard Academic Editing</title>
+  <desc id="desc">Evidence-calibrated English editing for scientific manuscripts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081629"/>
+      <stop offset="0.55" stop-color="#102d46"/>
+      <stop offset="1" stop-color="#0b4b5b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#66e3c4"/>
+      <stop offset="1" stop-color="#72b7ff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#b9d7e5" stroke-opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="420" rx="24" fill="url(#grid)"/>
+  <circle cx="1080" cy="42" r="210" fill="#21c2ad" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="70" cy="405" r="180" fill="#448cff" opacity="0.12" filter="url(#glow)"/>
+
+  <g transform="translate(84 72)">
+    <rect width="110" height="42" rx="21" fill="#65e2c3" fill-opacity="0.12" stroke="#65e2c3" stroke-opacity="0.42"/>
+    <text x="55" y="27" text-anchor="middle" fill="#83efd6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700" letter-spacing="2">CODEX SKILL</text>
+
+    <text x="0" y="137" fill="#f4fbff" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="84" font-weight="760" letter-spacing="-3">SAE</text>
+    <rect x="0" y="157" width="185" height="5" rx="2.5" fill="url(#accent)"/>
+    <text x="0" y="211" fill="#d4e9f2" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="600">Standard Academic Editing</text>
+    <text x="0" y="256" fill="#a8c6d4" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20">Polish the prose. Preserve the science.</text>
+  </g>
+
+  <g transform="translate(764 82)">
+    <rect width="354" height="256" rx="20" fill="#061321" fill-opacity="0.64" stroke="#a7d7df" stroke-opacity="0.18"/>
+    <circle cx="28" cy="28" r="5" fill="#ff7d79"/>
+    <circle cx="46" cy="28" r="5" fill="#f3c967"/>
+    <circle cx="64" cy="28" r="5" fill="#68d5a5"/>
+
+    <text x="28" y="79" fill="#678495" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">REMOVE</text>
+    <text x="28" y="108" fill="#ee8f8a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">may potentially suggest</text>
+    <line x1="27" y1="102" x2="216" y2="102" stroke="#ee8f8a" stroke-width="1.5" opacity="0.8"/>
+
+    <path d="M28 138H326" stroke="#a7d7df" stroke-opacity="0.13"/>
+
+    <text x="28" y="172" fill="#6eb5a7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">PRESERVE</text>
+    <text x="28" y="202" fill="#dcebf1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">87.4% · p = 0.031</text>
+    <text x="28" y="231" fill="#82e4ca" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">was associated with</text>
+  </g>
+</svg>
