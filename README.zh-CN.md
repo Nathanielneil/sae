@@ -1,82 +1,45 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="SAE — 标准学术英文润色" width="100%">
+<img src="assets/hero.svg" alt="SAE — 标准学术英文编辑。表达清楚，含义完整。" width="100%">
 
-<br>
+**为科学论文提供准确、克制的英文编辑。**<br>
+一个可复用的 Codex Skill，让语言更清楚，主张更忠实，边界更明确。
 
-**为 SCI 论文设计的证据约束型英文润色。**<br>
-改善表达，但不改变科学证据允许你说什么。
+[English](README.md) · [编辑示例](#一次克制的编辑) · [安装](#安装) · [编辑规范](skills/sae/SKILL.md)
 
-[![Codex Skill](https://img.shields.io/badge/Codex-Skill-0f766e?style=flat-square)](skills/sae/SKILL.md)
-[![Validation](https://img.shields.io/github/actions/workflow/status/Nathanielneil/sae/validate.yml?branch=main&style=flat-square&label=validation)](https://github.com/Nathanielneil/sae/actions/workflows/validate.yml)
-[![License](https://img.shields.io/github/license/Nathanielneil/sae?style=flat-square)](LICENSE)
-[![No dependencies](https://img.shields.io/badge/dependencies-none-334155?style=flat-square)](scripts/validate_skill.py)
-
-[English](README.md) · [安装](#安装) · [前后对比](#看看润色前后的差别) · [编辑规范](skills/sae/SKILL.md)
+[![Checks](https://img.shields.io/github/actions/workflow/status/Nathanielneil/sae/validate.yml?branch=main&style=flat-square&label=structure%20%26%20fixtures)](https://github.com/Nathanielneil/sae/actions/workflows/validate.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-47665b?style=flat-square)](LICENSE)
 
 </div>
 
----
+## 一次克制的编辑
 
-## 科学论文需要一种更克制的 AI 润色
+SAE 改善语法、简洁性、术语和段落内部衔接，保留科学主张、数值细节、引文及必要的不确定性。
 
-通用 AI 经常以科学准确性为代价换取表面的流畅：叠加 hedge、制造虚假转折、添加宣传性结论，甚至把“相关”润色成“因果”。
+**润色前**
 
-SAE 是一个可复用的 **Codex Skill**，定位于基础校对和实质性重写之间。它改善语法、清晰度、简洁性、衔接和段落内部逻辑，同时把论文证据视为不可随意改动的边界。
+> It should be emphasized that the proposed method achieved an accuracy of 87.4% in the test cohort, whereas the baseline model achieved an accuracy of 81.2%. Of course, these results do not establish that the method can fully replace conventional methods.
 
-<table>
-<tr>
-<td width="33%" valign="top">
+**润色后**
 
-### 准确
+> In the test cohort, the proposed method achieved an accuracy of 87.4%, compared with 81.2% for the baseline model. These results do not establish that the method can fully replace conventional methods.
 
-修正语法、句法、搭配、术语、时态、语态与段落衔接。
+删除空泛铺垫，保留两个数值、各自对应的模型，以及关于替代传统方法的限制。[查看带说明的示例 →](examples/abstract.md)
 
-</td>
-<td width="33%" valign="top">
+## 编辑边界
 
-### 克制
-
-删除空洞提示语、叠加限定、虚假转折和过度防御的 AI 表达。
-
-</td>
-<td width="33%" valign="top">
-
-### 证据安全
-
-保留数据、统计结果、引用、技术细节、不确定性和推论边界。
-
-</td>
-</tr>
-</table>
-
-## 看看润色前后的差别
-
-> **润色前**
->
-> It should be emphasized that the proposed method may potentially improve the prediction accuracy to a certain extent. Of course, this does not necessarily mean that it can completely replace conventional methods. In the test cohort, the proposed method achieved an accuracy of 87.4%, whereas the baseline model achieved an accuracy of 81.2%.
-
-> **SAE 润色后**
->
-> In the test cohort, the proposed method achieved an accuracy of 87.4%, compared with 81.2% for the baseline model. This result indicates improved predictive accuracy under the tested conditions.
-
-润色稿删除了防御性铺垫和重复限定，保留了两个数值，并用 `under the tested conditions` 保持实验边界。具体分析见[带说明的示例](examples/abstract.md)。
-
-## SAE 会改什么，又会保护什么
-
-| SAE 改善 | SAE 保护 |
+| 情形 | SAE 的处理方式 |
 |---|---|
-| 语法、句法、标点、冠词、介词和语言搭配 | 科学含义、研究问题、假设和结论 |
-| 清晰度、简洁性、句子结构和段落内部逻辑 | 数据、单位、样本量、实验条件和统计值 |
-| 术语、缩写、时态、语态和英美拼写一致性 | 引文、公式、符号、图表标签和专业命名 |
-| 冗余、空泛元话语、宣传性措辞和虚假对立 | 相关与因果、观察与解释之间的区别 |
-| 多余或叠加的 hedge | 真正反映不确定性、范围和证据强度的限定 |
+| 改善语言不会改变科学主张 | 直接编辑；已经清楚的句子保持不变。 |
+| 修改会改变机制、结论或主张强度 | 保留内容，在允许问询时请作者确认。 |
+| 提供的片段缺少支持材料 | 将证据状态视为未知，不据此认定主张错误。 |
+| 用户只需要正文 | 完成安全修改，保留无法消除的歧义，不插入说明或猜测。 |
 
-如果一句话存在多种科学上合理的解释，SAE 不会猜测，而是采用最安全的忠实表达并提出 **Author query**。
+数值与组别、条件保持对应，引文与主张保持对应，每个必要限定保留其作用范围。实质性科学修改需要明确授权。
+
+SAE 支持标题、摘要、论文章节、图注、投稿信和审稿回复，定位于中等强度的语言编辑。翻译、事实核查、同行评审和科学性修改属于另外的任务。[完整执行规范 →](skills/sae/SKILL.md)
 
 ## 安装
-
-### 克隆并安装
 
 ```bash
 git clone https://github.com/Nathanielneil/sae.git
@@ -84,14 +47,18 @@ cd sae
 ./scripts/install.sh
 ```
 
-SAE 默认安装到 `${CODEX_HOME:-$HOME/.codex}/skills/sae`。安装脚本不会静默覆盖已有版本；确认需要替换时运行：
+默认安装到 `${CODEX_HOME:-$HOME/.codex}/skills/sae`。如果尚未识别该 Skill，请开启新的 Codex 会话。
+
+<details>
+<summary>替换已有版本或手动安装</summary>
+
+安装脚本会保护已有版本。确认需要替换时运行：
 
 ```bash
 ./scripts/install.sh --force
 ```
 
-<details>
-<summary><strong>手动安装</strong></summary>
+手动安装前，请先确认目标目录尚不存在：
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
@@ -100,83 +67,28 @@ cp -R skills/sae "${CODEX_HOME:-$HOME/.codex}/skills/sae"
 
 </details>
 
-如果当前会话没有立即识别 SAE，请重启 Codex 或开启新会话。
-
 ## 使用
 
-通过 `$sae` 显式调用：
-
 ```text
-使用 $sae 对以下 Discussion 进行标准学术英文润色。保留科学含义和证据强度，
-删除不必要的防御性表达，只输出润色后的正文。
+使用 $sae 润色以下 Discussion。保留科学含义、数据和主张强度。
+先输出润色后的正文，再列出必要的作者问询。
 
 [粘贴英文原文]
 ```
 
-如果知道目标期刊或编辑偏好，可以一起提供：
+可按需补充目标期刊、英美拼写偏好或输出格式。如果希望省略说明，请要求**只输出润色后的正文**。SAE 会保留无法安全消除的歧义；只有整个任务都依赖缺失的科学信息时，才先请求必要澄清。
 
-```text
-使用 $sae 润色以下 Abstract，目标期刊为 Nature Communications。
-- 领域：biomedical engineering
-- 使用美式英语
-- 不得改变任何数值
-- 先输出润色稿，再列出必要的 Author queries
-
-[粘贴英文摘要]
-```
-
-## SAE 的定位
-
-```mermaid
-flowchart LR
-    A("基础校对<br/>语法 · 拼写 · 标点")
-    B(["SAE<br/>清晰 · 忠实 · 克制"])
-    C("深度重写<br/>结构 · 论证 · 内容")
-
-    A --> B --> C
-
-    classDef edge fill:#f8fafc,stroke:#cbd5e1,color:#334155,stroke-width:1px;
-    classDef sae fill:#0f766e,stroke:#5eead4,color:#ffffff,stroke-width:2px;
-    class A,C edge;
-    class B sae;
-    linkStyle default stroke:#94a3b8,stroke-width:2px;
-```
-
-SAE 可处理标题、摘要、论文各章节、完整论文、图注、投稿信和审稿回复。它不能替代同行评审、事实核查、翻译、统计审查或实质性科学改写。
-
-## 六条编辑原则
-
-1. **科学忠实优先**：不能通过强化结论来换取更有力的文风。
-2. **主张先于防御**：先陈述发现，再处理确有必要的限定。
-3. **一个充分的 hedge**：保留证据所需的谨慎，删除叠加限定。
-4. **不制造虚假深刻**：只有存在真实逻辑转折时才使用对立结构。
-5. **不静默猜测**：把影响科学含义的歧义转化为 Author query。
-6. **不为改而改**：已经准确、清楚的句子保持不变。
-
-完整执行规范见 [`skills/sae/SKILL.md`](skills/sae/SKILL.md)。
-
-## 项目结构
-
-```text
-.
-├── skills/sae/              # 可安装的 Codex Skill
-│   ├── SKILL.md             # 编辑流程与科学边界
-│   └── agents/openai.yaml   # Skill 界面元数据
-├── examples/                # 润色前后示例
-├── scripts/                 # 安装与验证脚本
-└── .github/workflows/       # 自动验证
-```
-
-项目验证不依赖第三方 Python 包：
+## 开发与验证
 
 ```bash
 python3 scripts/validate_skill.py
+python3 scripts/prepare_behavior_eval.py
 ```
 
-## 参与贡献
+上述检查验证 Skill 包结构与行为案例定义，**不代表模型润色质量已经通过评测**。[行为测试集](tests/README.md)提供独立请求及验收标准，用于检查主张保留、歧义处理和科学信息的对应关系。
 
-欢迎通过 Issue 或 Pull Request 改善科学忠实度、编辑一致性、触发准确性和学科覆盖。请把项目说明保留在可安装目录 `skills/sae/` 之外，并在提交前运行验证脚本。
+项目文档和测试保留在 `skills/sae/` 之外。改变编辑行为时，请补充有针对性的测试案例。
 
-## 许可证
+---
 
-[MIT](LICENSE) © 2026 SAE contributors
+[编辑规范](skills/sae/SKILL.md) · [示例](examples/abstract.md) · [行为测试](tests/README.md) · [MIT 许可证](LICENSE)

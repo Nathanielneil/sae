@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "skill_sha256": "d2394cdec6dce7a26da92ef19f5d53257ec135f619508649d921539a686d5fee",
+  "cases_sha256": "5d333f9ecde73daf97083c5381038ddc849b2052d9cdc59f4eccb0c493809d5d",
+  "executor": "Independent Codex subagent; exact model identifier unavailable",
+  "reviewer": "Parent Codex agent, semantic review against each case rubric",
+  "execution_mode": "16-request shared-context batch, followed by two targeted restructuring requests (SAE-008 and SAE-009); final responses shown below",
+  "rubric_visible_to_executor": false,
+  "limitations": [
+    "Synthetic smoke evaluation; one final response per case.",
+    "Requests were handled in a shared agent context, not isolated model sessions.",
+    "Reviewer was another agent, not a human expert; results do not establish general editing quality."
+  ],
+  "summary": {
+    "passed": 16,
+    "failed": 0,
+    "unrun": 0
+  },
+  "results": [
+    {
+      "id": "SAE-001",
+      "input_sha256": "a8fb390e899d06b45939649f1d2f40d222f7773781118aa13fc4bb1aecfee32f",
+      "response": "Model A achieved an accuracy of 87.4% in the test cohort.",
+      "verdict": "pass",
+      "review_evidence": "The clear sentence is unchanged; model, metric, value, and cohort remain attached."
+    },
+    {
+      "id": "SAE-002",
+      "input_sha256": "36968804ca11be1761d32998971f0492db7fe0788ff841d14f9a3f7b9012d6d2",
+      "response": "The proposed method achieved an accuracy of 87.4% in the test cohort, whereas the baseline model achieved 81.2%. These results do not establish that the method can fully replace conventional methods.",
+      "verdict": "pass",
+      "review_evidence": "Both empty prefaces are removed. The two accuracy assignments and the explicit replacement limitation remain; no calculated gain or significance is added."
+    },
+    {
+      "id": "SAE-003",
+      "input_sha256": "205bf98c521ec7828227feab7ad550fb6fabe10f9bd5d5c1ff93f44eb59770d5",
+      "response": "The coating increases durability by preventing oxidation.\n\nAuthor query: Oxidation and the proposed mechanism were not tested. Should preventing oxidation be presented as an untested hypothesis rather than an established mechanism?",
+      "verdict": "pass",
+      "review_evidence": "The oxidation mechanism and assertion strength remain in the text. A separate query asks whether it should be a hypothesis given the supplied untested status."
+    },
+    {
+      "id": "SAE-004",
+      "input_sha256": "8a6bcfd334391f79265c340ab3e2c87a5601472e624110801ad3a99587e392c9",
+      "response": "These findings establish that our method outperforms every existing method in all settings.\n\nAuthor query: The supplied results compare the method with one baseline on one dataset. Should the conclusion be limited to that comparison, or is additional evidence available to support superiority over every existing method in all settings?",
+      "verdict": "pass",
+      "review_evidence": "Subject–verb agreement is corrected. The universal claim is retained pending confirmation, with a query contrasting it against the one-baseline, one-dataset evidence."
+    },
+    {
+      "id": "SAE-005",
+      "input_sha256": "bf67adcdb4a352f97dbf430877d791e1ece615de1d0e19c1a69c396d1290ea24",
+      "response": "We present a novel calibration method for low-light imaging.",
+      "verdict": "pass",
+      "review_evidence": "The verb is corrected and novelty retained. No verification claim or query is added solely for missing literature."
+    },
+    {
+      "id": "SAE-006",
+      "input_sha256": "611c2c58a040d5029ac528f54b7dc806c479e55e372d74e964fb331702bf37ee",
+      "response": "Both models were evaluated at day 7. It had the lower error.\n\nAuthor query: Which model does “It” refer to in the second sentence?",
+      "verdict": "pass",
+      "review_evidence": "The agreement error is corrected and the unresolved pronoun retained. A separate query asks which model the pronoun denotes."
+    },
+    {
+      "id": "SAE-007",
+      "input_sha256": "f6df35c0b935c690a2dae89eb910d2294eecde1b77ac7f558c5af8f454b3b843",
+      "response": "Both models were evaluated at day 7. It had the lower error.",
+      "verdict": "pass",
+      "review_evidence": "Only manuscript text is returned; grammar is repaired while the unresolved model identity and lower-error comparison remain."
+    },
+    {
+      "id": "SAE-008",
+      "input_sha256": "b06abe9cc15d6f7a23d78498fad1030602c0a59a29fcb02c591c3d92d78dfbd9",
+      "response": "At day 14, model A (n = 42) had a sensitivity of 87.4%, and model B (n = 45) had a sensitivity of 81.2%. At day 28, specificity was 90.1% for model A and 92.3% for model B.",
+      "verdict": "pass",
+      "review_evidence": "The two day-14 sentences are combined. A retains n = 42 and 87.4% sensitivity; B retains n = 45 and 81.2%. Day-28 specificity remains 90.1% for A and 92.3% for B."
+    },
+    {
+      "id": "SAE-009",
+      "input_sha256": "fd234d0b3bd4e17fc4b989fc43cc0284842f523c8668ff10f3a573837ebb1bed",
+      "response": "Lee et al. [12] reported an increase in X in material A. Chen et al. [13] reported a decrease in Y in material B. In our study, Z did not change (Fig. 2).",
+      "verdict": "pass",
+      "review_evidence": "The literature comparison is split. Lee/[12]/increased X/material A and Chen/[13]/decreased Y/material B remain distinct; the present study retains unchanged Z/Fig. 2."
+    },
+    {
+      "id": "SAE-010",
+      "input_sha256": "52c7599685ceab47ef32656d998f56e071664db14b74956949b23d6ff7174dd4",
+      "response": "No statistically significant difference was detected between the groups (p = 0.080; 95% CI, -0.12 to 0.03).",
+      "verdict": "pass",
+      "review_evidence": "Non-significance is preserved without an equivalence claim. The exact p-value precision and confidence-interval signs and bounds remain."
+    },
+    {
+      "id": "SAE-011",
+      "input_sha256": "dc1e06b1a05ef4a9137243ea8e871460d101722bd785222dda3f3ea13b74711c",
+      "response": "In this exploratory sample, the method may reduce error under low-noise conditions. Not all participants completed at least three sessions.",
+      "verdict": "pass",
+      "review_evidence": "Exploratory scope, may, and low-noise conditions all remain. Not all and at least three retain their logical scope."
+    },
+    {
+      "id": "SAE-012",
+      "input_sha256": "67f133c84c9c6585c4d3e94d6703768615ed212bb8d9353b066268f72bbe45d3",
+      "response": "Samples received 5 mg of reagent at 0.050 mol/L for 24 h. The prespecified threshold was p < 0.050.",
+      "verdict": "pass",
+      "review_evidence": "Only spacing changes in 5 mg, 0.050 mol/L, and 24 h. The threshold remains p < 0.050."
+    },
+    {
+      "id": "SAE-013",
+      "input_sha256": "9cdec19af4f43870f6c29006095a7ca4a258d364783248aaab39793ed60f01bd",
+      "response": "We plan to repeat the experiment and will report the results in the revised manuscript.",
+      "verdict": "pass",
+      "review_evidence": "Plan is corrected without changing either future action into a completed action or inventing a location."
+    },
+    {
+      "id": "SAE-014",
+      "input_sha256": "cdf35a4882c4d118216e8185d0ac0d9e875f7579d4ebcc16d5c51b5eb2bb46a6",
+      "response": "As shown in Fig.~\\ref{fig:ablation}, model A achieves an accuracy of $87.4\\%$ under the conditions in Eq.~\\eqref{eq:noise} \\cite{lee2024}.",
+      "verdict": "pass",
+      "review_evidence": "Achieve becomes achieves. LaTeX commands, labels, citation key, math delimiters, escaped percent sign, and numerical association are preserved."
+    },
+    {
+      "id": "SAE-015",
+      "input_sha256": "e8cec178fa630642995bdf0219180af22256688ff4910d7dce0659fa410820dd",
+      "response": "The coating improves durability, possibly by preventing oxidation.",
+      "verdict": "pass",
+      "review_evidence": "The observed durability improvement remains asserted; possibly qualifies only the authorized oxidation-mechanism correction. No extra permission request or commentary appears."
+    },
+    {
+      "id": "SAE-016",
+      "input_sha256": "e4ddbd78a497b66ebcd4265eda0ef872c369e30a234738170d1b3ddbb1da7524",
+      "response": "What was higher, and what was it compared with?",
+      "verdict": "pass",
+      "review_evidence": "The response asks what was higher and its comparator before producing a sentence; no scientific details are invented."
+    }
+  ]
+}

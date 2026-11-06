@@ -22,3 +22,6 @@ jobs:
       - name: Validate SAE
         run: python3 scripts/validate_skill.py
 
+      - name: Validate behavioral case definitions
+        run: python3 scripts/prepare_behavior_eval.py
+
