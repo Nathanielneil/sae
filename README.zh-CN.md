@@ -3,38 +3,42 @@
   <img src="assets/hero.svg" width="100%" alt="SAE · 标准学术英文编辑">
 </picture>
 
-**SAE 是用于科研论文英文润色的 Codex Skill。** 它改善句子表达，保留研究测量了什么、结果由谁报告，以及结论有多大把握。
+在 Codex 中用 `$sae` 润色英文论文。让句子读起来更自然，也让每个数值、每处引文和每项结论都保留原意。
 
-[English](README.md)　·　[快速上手](#快速上手)　·　[编辑规范](skills/sae/SKILL.md)
+[English](README.md) · [快速上手](#快速上手) · [编辑规范](skills/sae/SKILL.md)
 
-## 看一处修改
+### 一处删改
+
+下面这句摘要里，有两处措辞都显得谨慎，但只有一处真正限定了结论。
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/proof-mobile.svg">
   <img src="assets/proof.svg" width="100%" alt="英文校样：删去 Of course，保留 these results do not establish that the method can fully replace conventional methods，句首改为大写。">
 </picture>
 
-“Of course” 是可以删掉的铺垫。“Do not establish” 则限定了结论：这些结果尚不能证明该方法可以完全替代传统方法。
+删去 *Of course*，意思不变；保留 *do not establish*，读者才知道：这些结果尚不能证明新方法可以完全替代传统方法。
+
+### 数值与归属
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/values-zh-mobile.svg">
   <img src="assets/values-zh.svg" width="100%" alt="在同一示例的测试队列中，所提方法的准确率为 87.4%，基线模型为 81.2%。">
 </picture>
 
-在这个虚构示例中，**87.4%** 属于所提方法，**81.2%** 属于基线模型。改写后要核对数值与模型是否仍然对应，引文也要留在它支持的主张旁。[查看完整润色对照](examples/abstract.md)
+两个数值出自同一段示例。即使调换语序，87.4% 仍属于所提方法，81.2% 仍属于基线模型；引文也须跟随它所支持的发现。[阅读全文对照](examples/abstract.md)
 
-## 什么时候需要作者确认
+### 何时交给作者
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/decisions-zh-mobile.svg">
   <img src="assets/decisions-zh.svg" width="100%" alt="语言问题直接改；证据冲突时保留主张，并在允许时询问作者；片段缺少支持材料时保留原主张。">
 </picture>
 
-只看到摘要，不能据此判定某项主张错误。如果已提供的材料确实矛盾，SAE 会先保留原意，在允许问询时指出具体冲突。改变科学含义需要作者明确授权。
+摘要里没写出依据，不能据此删掉主张。若已提供的材料确实矛盾，SAE 会保留原意，在允许问询时请作者确认。
 
-**只要正文时：** SAE 修改能确定的部分，保留无法安全消除的歧义。只有整个任务都依赖缺失信息时，才先请求澄清。
+如果要求**只给正文**，SAE 会先改能确定的部分，把局部歧义留在原处。只有整个任务都依赖缺失信息时，才先请求澄清。
 
-## 快速上手
+### 快速上手
 
 ```bash
 git clone https://github.com/Nathanielneil/sae.git
@@ -42,9 +46,9 @@ cd sae
 ./scripts/install.sh
 ```
 
-在 Codex 中输入下面的请求，再粘贴英文原文：
+在下面的请求之后，粘贴英文原文即可：
 
-> 使用 $sae 润色以下 Discussion。保留主张强度，先给出正文，再列出必要的作者问询。
+> 使用 $sae 润色这段 Discussion。保留主张强度，先给出正文，再列出必要的作者问询。
 
 <details>
 <summary>安装位置与更新方式</summary>
@@ -53,4 +57,4 @@ cd sae
 
 </details>
 
-[行为案例与验证方法](tests/README.md)　·　[MIT 许可证](LICENSE)
+[行为案例与验证方法](tests/README.md) · [MIT 许可证](LICENSE)

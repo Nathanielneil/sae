@@ -1,21 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="195" viewBox="0 0 920 195" role="img" aria-labelledby="title desc">
-  <title id="title">Accuracy in the illustrative test cohort</title>
-  <desc id="desc">Proposed method: 87.4%. Baseline model: 81.2%. Both bars use the same 0–100% scale.</desc>
-  <rect x="0" y="0" width="920" height="195" rx="8" fill="#edf4ef"/>
-  <text x="32" y="29" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" font-weight="600" letter-spacing="1">02  /  DATA CHECK</text>
-  <text x="888" y="29" fill="#13665a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" text-anchor="end">Test cohort · Accuracy</text>
-  <text x="32" y="89" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >Proposed method</text>
-  <text x="244" y="89" fill="#13665a" font-family="'SFMono-Regular',Consolas,monospace" font-size="21" text-anchor="end" font-weight="bold">87.4%</text>
-  <rect x="278" y="83" width="587" height="8" rx="4" fill="#d5e1d9"/>
-  <rect x="278" y="83" width="513.038" height="8" rx="4" fill="#13665a"/>
-  <text x="32" y="140" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >Baseline model</text>
-  <text x="244" y="140" fill="#506979" font-family="'SFMono-Regular',Consolas,monospace" font-size="21" text-anchor="end" font-weight="bold">81.2%</text>
-  <rect x="278" y="134" width="587" height="8" rx="4" fill="#d5e1d9"/>
-  <rect x="278" y="134" width="476.644" height="8" rx="4" fill="#506979"/>
-  <path d="M278.0 157 L278.0 162" fill="none" stroke="#81978e" stroke-width="1"/>
-  <text x="278.0" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="start">0%</text>
-  <path d="M571.5 157 L571.5 162" fill="none" stroke="#81978e" stroke-width="1"/>
-  <text x="571.5" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="middle">50%</text>
-  <path d="M865.0 157 L865.0 162" fill="none" stroke="#81978e" stroke-width="1"/>
-  <text x="865.0" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="end">100%</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="185" viewBox="0 0 920 185" role="img" aria-labelledby="title desc">
+<title id="title">Test-cohort accuracy</title>
+<desc id="desc">Illustrative values on identical 0 to 100 percent scales: proposed method 87.4%, baseline model 81.2%.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="920" height="185" fill="var(--paper)"/>
+<text x="30" y="36" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" >Accuracy in the test cohort</text>
+<text x="30" y="105" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="59" >87.4%</text>
+<text x="32" y="134" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >Proposed method</text>
+<path d="M30 163L388 163" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M30 163L342.892 163" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="342.89" cy="163" r="3.8" fill="var(--violet)" stroke="var(--violet)" stroke-width="1.5"/>
+<text x="484" y="105" fill="var(--ink)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="59" >81.2%</text>
+<text x="486" y="134" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >Baseline model</text>
+<path d="M484 163L842 163" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M484 163L774.696 163" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="774.7" cy="163" r="3.8" fill="var(--paper)" stroke="var(--soft)" stroke-width="1.5"/>
 </svg>

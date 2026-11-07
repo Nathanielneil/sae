@@ -1,21 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="223" viewBox="0 0 400 223" role="img" aria-labelledby="title desc">
-  <title id="title">Three editorial decisions</title>
-  <desc id="desc">Edit language directly; query concrete conflicts when permitted; retain claims when context is missing.</desc>
-  <rect x="0" y="0" width="400" height="223" rx="8" fill="#f0f3f6"/>
-  <text x="20" y="29" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">03  /  EDITORIAL DECISIONS</text>
-  <path d="M20 46 L380 46" fill="none" stroke="#cdd7d9" stroke-width="1"/>
-  <text x="20" y="78" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Language only</text>
-  <path d="M182 72 L217 72" fill="none" stroke="#789191" stroke-width="1.5"/>
-<path d="m211 68 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
-  <text x="232" y="78" fill="#13665a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">Edit directly</text>
-  <path d="M20 105 L380 105" fill="none" stroke="#cdd7d9" stroke-width="1"/>
-  <text x="20" y="137" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Conflicting evidence</text>
-  <path d="M182 131 L217 131" fill="none" stroke="#789191" stroke-width="1.5"/>
-<path d="m211 127 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
-  <text x="232" y="137" fill="#a13932" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">Ask the author</text>
-  <path d="M20 164 L380 164" fill="none" stroke="#cdd7d9" stroke-width="1"/>
-  <text x="20" y="196" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Missing context</text>
-  <path d="M182 190 L217 190" fill="none" stroke="#789191" stroke-width="1.5"/>
-<path d="m211 186 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
-  <text x="232" y="196" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">Retain the claim</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="176" viewBox="0 0 400 176" role="img" aria-labelledby="title desc">
+<title id="title">Choosing an edit</title>
+<desc id="desc">Edit language directly, query concrete conflicts when allowed, and preserve a claim when context is missing.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="400" height="176" fill="var(--paper)"/>
+<path d="M12 88C30 88 23 37 49 37" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="50" cy="37" r="2.8" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="64" y="43" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Language only</text>
+<text x="242" y="44" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" >Edit directly</text>
+<path d="M12 88C30 88 23 88 49 88" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="50" cy="88" r="2.8" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="64" y="94" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Conflicting evidence</text>
+<text x="242" y="95" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" >Ask the author</text>
+<path d="M12 88C30 88 23 139 49 139" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="50" cy="139" r="2.8" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="64" y="145" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >Missing context</text>
+<text x="242" y="146" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" >Keep the claim</text>
 </svg>

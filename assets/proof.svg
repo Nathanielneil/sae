@@ -1,14 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="255" viewBox="0 0 920 255" role="img" aria-labelledby="title desc">
-  <title id="title">Removing an empty preface</title>
-  <desc id="desc">Remove Of course; retain the statement that the results do not establish full replacement.</desc>
-  <rect x="0" y="0" width="920" height="255" rx="8" fill="#f9f5eb"/>
-  <text x="32" y="32" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" font-weight="600" letter-spacing="1">01  /  MANUSCRIPT PROOF</text>
-  <path d="M32 48 L888 48" fill="none" stroke="#c7c6b9" stroke-width="1"/>
-  <text x="32" y="82" fill="#a13932" font-family="'SFMono-Regular',Consolas,monospace" font-size="15" font-weight="600" letter-spacing="1">ORIGINAL</text>
-<text x="175" y="85" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="24"><tspan fill="#a13932" text-decoration="line-through">Of course,</tspan> these results do not establish that the method</text>
-  <text x="175" y="116" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="24" >can fully replace conventional methods.</text>
-  <path d="M32 142 L888 142" fill="none" stroke="#dad6c6" stroke-width="1"/>
-  <text x="32" y="177" fill="#13665a" font-family="'SFMono-Regular',Consolas,monospace" font-size="15" font-weight="600" letter-spacing="1">EDITED</text>
-<text x="175" y="180" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="24">These results <tspan fill="#13665a" text-decoration="underline">do not establish</tspan> that the method</text>
-  <text x="175" y="211" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="24" >can fully replace conventional methods.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="208" viewBox="0 0 920 208" role="img" aria-labelledby="title desc">
+<title id="title">Original and edited manuscript excerpt</title>
+<desc id="desc">Of course is deleted. Do not establish is retained: the result does not establish full replacement.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="920" height="208" fill="var(--paper)"/>
+<path d="M20 11L900 11" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M20 197L900 197" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<text x="30" y="50" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Original</text>
+<text x="30" y="92" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)"><tspan fill="var(--old)" text-decoration="line-through">Of course,</tspan> these results do not</text>
+<text x="30" y="126" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">establish that the method can fully</text>
+<text x="30" y="160" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">replace conventional methods.</text>
+<text x="489" y="50" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Edited</text>
+<text x="489" y="92" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">These results <tspan fill="var(--violet)" text-decoration="underline">do not establish</tspan></text>
+<text x="489" y="126" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">that the method can fully replace</text>
+<text x="489" y="160" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">conventional methods.</text>
+<path d="M434 115q10-3 23-1m-6-4 6 4-6 4" fill="none" stroke="var(--graph)" stroke-width="1.1" opacity="1" stroke-linecap="round"/>
 </svg>

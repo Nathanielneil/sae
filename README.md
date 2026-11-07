@@ -3,11 +3,13 @@
   <img src="assets/hero.svg" width="100%" alt="SAE · Standard Academic Editing for scientific manuscripts">
 </picture>
 
-**SAE edits scientific English in Codex.** Give it a manuscript passage to improve the wording while preserving what was measured, who reported it, and how certain the finding is.
+Edit scientific English with `$sae` in Codex. Refine a sentence while keeping its evidence, citations, and degree of certainty intact.
 
-[中文](README.zh-CN.md)　·　[Quick start](#quick-start)　·　[Editing rules](skills/sae/SKILL.md)
+[中文](README.zh-CN.md) · [Quick start](#quick-start) · [Editing rules](skills/sae/SKILL.md)
 
-## An edit under the microscope
+### In the margins
+
+Two phrases in this abstract sound cautious. Only one limits what the study can claim.
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/proof-mobile.svg">
@@ -16,25 +18,27 @@
 
 “Of course” can go. “Do not establish” must stay: the study has not shown that the method can fully replace conventional methods.
 
+### Keeping the evidence in place
+
 <picture>
   <source media="(max-width: 600px)" srcset="assets/values-en-mobile.svg">
   <img src="assets/values-en.svg" width="100%" alt="In the same example test cohort, accuracy is 87.4% for the proposed method and 81.2% for the baseline.">
 </picture>
 
-In this constructed example, **87.4%** belongs to the proposed method and **81.2%** to the baseline. SAE checks those assignments after editing; citations must likewise stay with the claims they support. [Read the full before-and-after passage →](examples/abstract.md)
+Both numbers come from the same illustrative passage. Each must stay with its model, just as a citation must stay with the finding it supports. [Read the annotated edit](examples/abstract.md).
 
-## When the evidence is unclear
+### When the wording touches the science
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/decisions-en-mobile.svg">
   <img src="assets/decisions-en.svg" width="100%" alt="Edit language directly. For conflicting evidence, retain the claim and query the author when permitted. If only context is missing, retain the claim.">
 </picture>
 
-A missing Methods section does not invalidate an abstract. If the supplied text actually conflicts with a claim, SAE keeps the claim and asks a focused question when permitted. Only the author can authorize a change to its scientific meaning.
+An excerpt may omit the evidence for a claim. SAE preserves that claim. When supplied evidence conflicts with it, SAE retains the wording and asks the author before changing its meaning.
 
-**For clean text only:** SAE edits around unresolved ambiguity. It asks for clarification first only if the entire requested edit depends on missing information.
+Request **clean text only** to receive safe edits without comments. Unresolved ambiguity stays in the passage; SAE asks first only when missing information blocks the whole task.
 
-## Quick start
+### Quick start
 
 ```bash
 git clone https://github.com/Nathanielneil/sae.git
@@ -42,9 +46,9 @@ cd sae
 ./scripts/install.sh
 ```
 
-In Codex, paste your passage after a request such as:
+Paste a passage after a request such as:
 
-> Use $sae to edit this Discussion section. Preserve claim strength and return the edited text followed by any necessary author queries.
+> Use $sae to edit this Discussion section. Preserve the strength of the claims and list any necessary author queries after the edited text.
 
 <details>
 <summary>Installation details and updates</summary>
@@ -53,4 +57,4 @@ The skill is installed at `${CODEX_HOME:-$HOME/.codex}/skills/sae`. Start a new 
 
 </details>
 
-[Behavioral cases & validation](tests/README.md)　·　[MIT license](LICENSE)
+[Behavioral cases & validation](tests/README.md) · [MIT license](LICENSE)

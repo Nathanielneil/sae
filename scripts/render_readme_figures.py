@@ -1,163 +1,198 @@
-"""Regenerate the README plates (stdlib only). Run from any directory."""
+"""Draw SAE's README figures, including narrow layouts; Python standard library only."""
 from html import escape
 from pathlib import Path
 
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
-SANS = "Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif"
-SERIF = "Georgia,'Times New Roman',serif"
-MONO = "'SFMono-Regular',Consolas,monospace"
-INK, MUTED, RED, TEAL = "#172f3a", "#50656b", "#a13932", "#13665a"
+SERIF = "Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif"
+SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif"
+PALETTE = """
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+"""
 
 
-def t(x, y, text, size=22, color=INK, face=SANS, extra=""):
-    return f'  <text x="{x}" y="{y}" fill="{color}" font-family="{face}" font-size="{size}" {extra}>{escape(text)}</text>'
+def txt(x, y, words, size, color="ink", font=SANS, attrs=""):
+    return (f'<text x="{x}" y="{y}" fill="var(--{color})" font-family="{font}" '
+            f'font-size="{size}" {attrs}>{escape(words)}</text>')
 
 
-def rule(x1, y1, x2, y2, color, width=1):
-    return f'  <path d="M{x1} {y1} L{x2} {y2}" fill="none" stroke="{color}" stroke-width="{width}"/>'
+def line(x1, y1, x2, y2, color="hair", width=1):
+    return f'<path d="M{x1} {y1}L{x2} {y2}" stroke="var(--{color})" stroke-width="{width}" fill="none"/>'
 
 
-def rect(x, y, w, h, color, r=0):
-    return f'  <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r}" fill="{color}"/>'
+def path(d, color, width=1, opacity=1):
+    return (f'<path d="{d}" fill="none" stroke="var(--{color})" stroke-width="{width}" '
+            f'opacity="{opacity}" stroke-linecap="round"/>')
 
 
-def label(x, y, text, color=MUTED, size=15):
-    return t(x, y, text, size, color, MONO, 'font-weight="600" letter-spacing="1"')
+def dot(x, y, r, color="violet", hollow=False):
+    fill = "paper" if hollow else color
+    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="var(--{fill})" stroke="var(--{color})" stroke-width="1.5"/>'
 
 
-def plate(name, w, h, title, description, contents):
+def plate(name, w, h, title, desc, content):
     (ASSETS / name).write_text(
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-labelledby="title desc">\n'
-        f'  <title id="title">{escape(title)}</title>\n  <desc id="desc">{escape(description)}</desc>\n'
-        + "\n".join(contents) + "\n</svg>\n", encoding="utf-8")
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" '
+        f'role="img" aria-labelledby="title desc">\n<title id="title">{escape(title)}</title>\n'
+        f'<desc id="desc">{escape(desc)}</desc>\n<style>{PALETTE}</style>\n'
+        f'<rect width="{w}" height="{h}" fill="var(--paper)"/>\n' + "\n".join(content) + "\n</svg>\n",
+        encoding="utf-8")
+
+
+def silk():
+    """Interpolate two folded cubic splines: every filament follows the same continuous sheet."""
+    # Control points for the two selvedges of each length of silk (three cubic segments).
+    edges = [
+        ([(318,278),(464,240),(444,143),(554,111),(682,73),(668,214),(775,170),(846,140),(878,28),(968,-42)],
+         [(307,303),(501,254),(480,140),(588,111),(706,79),(680,232),(779,204),(870,179),(916,94),(975,77)]),
+        ([(467,298),(584,279),(668,228),(699,126),(736,6),(825,72),(859,90),(904,113),(941,112),(979,90)],
+         [(443,285),(571,285),(658,190),(686,109),(735,-31),(796,50),(841,67),(884,96),(939,112),(980,103)])
+    ]
+    layers = []
+    for k,(a,b) in enumerate(edges):
+        count = 34 if k == 0 else 22
+        for n in range(count):
+            f=n/(count-1)
+            points = ["%.2f %.2f" % (x+(u-x)*f, y+(v-y)*f)
+                      for (x,y),(u,v) in zip(a,b)]
+            d = "M"+points[0]+" C"+" ".join(points[1:])
+            layers.append(path(d, "silk" if k == 0 else "glint", 0.82 if k == 0 else 0.68,
+                               round((0.36 if k == 0 else 0.27)+0.44*(1-f)**1.8,3)))
+    layers.append(path("M407 300C555 243 547 175 654 167S803 225 954 38","echo",1,0.7))
+    return "".join(layers)
 
 
 def cover(mobile):
-    w, h = (400, 180) if mobile else (920, 248)
-    # Two manuscript sheets and a diagonally laid editing pencil.
-    art = '\n'.join([
-        '<g transform="rotate(-9 138 88)">',
-        rect(19, 16, 222, 154, "#708b89", 3),
-        rect(12, 8, 222, 154, "#ccd7cb", 3), '</g>',
-        '<g transform="rotate(7 130 87)">',
-        rect(28, 11, 220, 152, "#fbf3da", 3),
-        rect(44, 28, 55, 4, "#25454d"), rect(44, 39, 126, 2, "#adc0af"),
-        rect(44, 60, 87, 5, "#6c8581"), rect(138, 60, 53, 5, "#a9b9ac"),
-        rect(44, 78, 46, 5, "#89a19a"), rect(97, 78, 94, 5, "#89a19a"),
-        rule(92, 82, 135, 77, "#c94e3d", 2.7),
-        '<path d="M96 86q18 5 38 0m-25 9 6-5 5 4" fill="none" stroke="#b83c32" stroke-width="2.4" stroke-linecap="round"/>',
-        rect(44, 103, 128, 5, "#a9b9ac"), rect(44, 122, 83, 5, "#a9b9ac"),
-        '<path d="m193 98 5 5 10-12" fill="none" stroke="#177566" stroke-width="3.5" stroke-linecap="round"/>',
-        '</g>',
-        '<g transform="translate(137 122) rotate(-35)">',
-        '<path d="M0 0 19-5h113q5 0 5 5t-5 5H19z" fill="#e87e62"/>',
-        '<path d="M19 0h113v5H19z" fill="#c85548"/><path d="M0 0l19-5v10z" fill="#eac6a0"/><path d="m0 0 6-1.6V1.6z" fill="#1e3541"/>',
-        '<path d="M121-5v10" stroke="#ae4139" stroke-width="3"/></g>',
-    ])
+    w,h = (400,225) if mobile else (920,292)
+    # A quiet vignette dissolves into the page at every edge.
+    start, end = (159,260) if mobile else (304,493)
+    wash = ('<defs><radialGradient id="wash"><stop offset="0" stop-color="var(--bloom)" stop-opacity=".94"/>'
+            '<stop offset=".55" stop-color="var(--bloom)" stop-opacity=".53"/>'
+            '<stop offset="1" stop-color="var(--paper)" stop-opacity="0"/></radialGradient>'
+            f'<linearGradient id="veil" gradientUnits="userSpaceOnUse" x1="{start}" x2="{end}">'
+            '<stop stop-color="black"/><stop offset="1" stop-color="white"/></linearGradient>'
+            f'<mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="{w}" height="{h}">'
+            f'<rect width="{w}" height="{h}" fill="url(#veil)"/></mask></defs>')
+    c=[wash,f'<ellipse cx="{w*.81}" cy="{h*.50}" rx="{w*.52}" ry="{h*.76}" fill="url(#wash)"/>']
     if mobile:
-        c = [rect(0, 0, w, h, INK, 8), label(20, 28, "CODEX  /  SKILL", "#b5dace", 10),
-             t(16, 103, "SAE", 81, "#fbf4df", SERIF),
-             t(20, 135, "Standard Academic", 18, "#e0ebe3"),
-             t(20, 158, "Editing", 18, "#e0ebe3"),
-             f'<g transform="translate(207 40) scale(.65)">{art}</g>']
+        c += [f'<g mask="url(#fade)"><g transform="translate(37 17) scale(.39 .57)">{silk()}</g></g>',
+              txt(14,38,"SCIENTIFIC ENGLISH",10.5,"soft",attrs='letter-spacing="2" word-spacing="3"'),
+              txt(9,127,"SAE",86,"ink",SERIF,'letter-spacing="-4"'),
+              txt(15,167,"Standard Academic Editing",20,"soft",SERIF,'font-style="italic"'),
+              line(15,195,57,195,"graph")]
     else:
-        c = [rect(0, 0, w, h, INK, 10), rule(38, 49, 417, 49, "#52716f"),
-             label(40, 36, "CODEX  /  MANUSCRIPT EDITING", "#b5dace", 12),
-             t(31, 161, "SAE", 120, "#fbf4df", SERIF),
-             t(40, 203, "Standard Academic Editing", 27, "#e0ebe3"),
-             f'<g transform="translate(528 16) scale(1.24)">{art}</g>']
-    plate("hero-mobile.svg" if mobile else "hero.svg", w, h, "SAE · Standard Academic Editing",
-          "A marked-up manuscript and editing pencil.", c)
+        c += [f'<g mask="url(#fade)">{silk()}</g>',
+              txt(30,52,"SCIENTIFIC ENGLISH",12,"soft",attrs='letter-spacing="2.6" word-spacing="3"'),
+              txt(22,180,"SAE",133,"ink",SERIF,'letter-spacing="-6"'),
+              txt(31,222,"Standard Academic Editing",31,"soft",SERIF,'font-style="italic"'),
+              line(32,254,94,254,"graph")]
+    plate("hero-mobile.svg" if mobile else "hero.svg",w,h,"SAE · Standard Academic Editing",
+          "The SAE wordmark beside two folded ribbons drawn in fine violet lines.",c)
+
+
+def wording(x,y,parts,size):
+    # Accent stays attached to its actual words, even if the available serif face changes.
+    content=[]
+    for kind,words in parts:
+        if kind == "delete":
+            content.append(f'<tspan fill="var(--old)" text-decoration="line-through">{escape(words)}</tspan>')
+        elif kind == "keep":
+            content.append(f'<tspan fill="var(--violet)" text-decoration="underline">{escape(words)}</tspan>')
+        else:
+            content.append(escape(words))
+    return f'<text x="{x}" y="{y}" font-size="{size}" font-family="{SERIF}" fill="var(--ink)">{"".join(content)}</text>'
 
 
 def proof(mobile):
-    # Set an actual excerpt twice. The green rule marks the words limiting the inference.
-    w, h = (400, 298) if mobile else (920, 255)
-    x = 20 if mobile else 32
-    c = [rect(0, 0, w, h, "#f9f5eb", 8)]
-    def marked(x, y, before, words, after, size, original=False):
-        mark = "line-through" if original else "underline"
-        color = RED if original else TEAL
-        return (f'<text x="{x}" y="{y}" fill="{INK}" font-family="{SERIF}" font-size="{size}">'
-                f'{escape(before)}<tspan fill="{color}" text-decoration="{mark}">{escape(words)}</tspan>'
-                f'{escape(after)}</text>')
-
     if mobile:
-        c += [label(x, 29, "01  /  MANUSCRIPT PROOF", size=12), rule(x, 42, 380, 42, "#c7c6b9"),
-              label(x, 66, "ORIGINAL", RED, 12), marked(x, 94, "", "Of course,", " these results do not establish", 19, True),
-              t(x, 120, "that the method can fully replace", 19, face=SERIF),
-              t(x, 146, "conventional methods.", 19, face=SERIF), rule(x, 164, 380, 164, "#dad6c6"),
-              label(x, 188, "EDITED", TEAL, 12), marked(x, 216, "These results ", "do not establish", " that", 19),
-              t(x, 242, "the method can fully replace", 19, face=SERIF),
-              t(x, 268, "conventional methods.", 19, face=SERIF)]
+        w,h=400,286
+        c=[line(12,9,388,9),txt(12,38,"Original",16,"soft",SERIF,'font-style="italic"'),
+           wording(12,68,[("delete","Of course,"),(""," these results do not establish")],20),
+           txt(12,94,"that the method can fully replace",20,font=SERIF),
+           txt(12,120,"conventional methods.",20,font=SERIF),
+           line(12,142,44,142,"graph"),
+           txt(12,168,"Edited",16,"violet",SERIF,'font-style="italic"'),
+           wording(12,198,[("","These results "),("keep","do not establish"),(""," that")],20),
+           txt(12,224,"the method can fully replace",20,font=SERIF),
+           txt(12,250,"conventional methods.",20,font=SERIF), line(12,278,388,278)]
     else:
-        c += [label(x, 32, "01  /  MANUSCRIPT PROOF", size=14), rule(x, 48, 888, 48, "#c7c6b9"),
-              label(x, 82, "ORIGINAL", RED), marked(175, 85, "", "Of course,", " these results do not establish that the method", 24, True),
-              t(175, 116, "can fully replace conventional methods.", 24, face=SERIF),
-              rule(x, 142, 888, 142, "#dad6c6"),
-              label(x, 177, "EDITED", TEAL), marked(175, 180, "These results ", "do not establish", " that the method", 24),
-              t(175, 211, "can fully replace conventional methods.", 24, face=SERIF)]
-    plate("proof-mobile.svg" if mobile else "proof.svg", w, h, "Removing an empty preface",
-          "Remove Of course; retain the statement that the results do not establish full replacement.", c)
+        w,h=920,208
+        c=[line(20,11,900,11),line(20,197,900,197)]
+        for x, tag, color, lines in [
+            (30,"Original","soft",[[("delete","Of course,"),(""," these results do not")],
+                                  [("","establish that the method can fully")],[("","replace conventional methods.")]]),
+            (489,"Edited","violet",[[("","These results "),("keep","do not establish")],
+                                    [("","that the method can fully replace")],[("","conventional methods.")]])]:
+            c.append(txt(x,50,tag,19,color,SERIF,'font-style="italic"'))
+            for j,words in enumerate(lines):
+                c.append(wording(x,92+j*34,words,24))
+        c.append(path("M434 115q10-3 23-1m-6-4 6 4-6 4","graph",1.1))
+    plate("proof-mobile.svg" if mobile else "proof.svg",w,h,"Original and edited manuscript excerpt",
+          "Of course is deleted. Do not establish is retained: the result does not establish full replacement.",c)
 
 
-def numbers(mobile, zh):
-    w, h = (400, 222) if mobile else (920, 195)
-    x = 20 if mobile else 32
-    start, end = (20, 378) if mobile else (278, 865)
-    c = [rect(0, 0, w, h, "#edf4ef", 8), label(x, 29, "02  /  DATA CHECK", size=12 if mobile else 14),
-         t(w-x, 29, "测试队列 · 准确率" if zh else "Test cohort · Accuracy", 15 if mobile else 18, TEAL,
-           extra='text-anchor="end"')]
-    for i, (en, cn, value, color) in enumerate([
-        ("Proposed method", "所提方法", 87.4, TEAL), ("Baseline model", "基线模型", 81.2, "#506979")]):
-        y = (81+72*i) if mobile else (83+51*i)
-        tx, ty = (x, y-13) if mobile else (x, y+6)
-        c.append(t(tx, ty, cn if zh else en, 17 if mobile else 19))
-        nx, ny = (end, ty) if mobile else (244, ty)
-        c.append(t(nx, ny, f"{value:.1f}%", 19 if mobile else 21, color, MONO, 'text-anchor="end" font-weight="bold"'))
-        c += [rect(start, y, end-start, 8, "#d5e1d9", 4),
-              rect(start, y, (end-start)*value/100, 8, color, 4)]
-    axis = 200 if mobile else 174
-    for v in (0, 50, 100):
-        xx = start + (end-start)*v/100
-        align = {0:"start",50:"middle",100:"end"}[v]
-        c += [rule(xx, axis-17, xx, axis-12, "#81978e"),
-              t(xx, axis+2, f"{v}%", 12 if mobile else 14, MUTED, MONO, f'text-anchor="{align}"')]
-    plate(f"values-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg", w, h,
-          "测试队列中的准确率" if zh else "Accuracy in the illustrative test cohort",
-          "Proposed method: 87.4%. Baseline model: 81.2%. Both bars use the same 0–100% scale.", c)
+def numbers(mobile,zh):
+    w,h=(400,168) if mobile else (920,185)
+    margin=12 if mobile else 30
+    c=[txt(margin,27 if mobile else 36,"测试队列中的准确率" if zh else "Accuracy in the test cohort",
+           16 if mobile else 19,"soft",SERIF)]
+    for i,(model,value) in enumerate([("所提方法" if zh else "Proposed method",87.4),
+                                      ("基线模型" if zh else "Baseline model",81.2)]):
+        x=(12+201*i) if mobile else (30+454*i)
+        baseline=84 if mobile else 105
+        c += [txt(x,baseline,f"{value:.1f}%",43 if mobile else 59,"violet" if i==0 else "ink",SERIF),
+              txt(x+2,baseline+(25 if mobile else 29),model,16 if mobile else 19,"soft")]
+        length=160 if mobile else 358
+        y=139 if mobile else 163
+        c += [line(x,y,x+length,y),line(x,y,x+length*value/100,y,"graph",1.6),
+              dot(round(x+length*value/100,2),y,3.8,"violet" if i==0 else "soft",hollow=i==1)]
+    plate(f"values-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg",w,h,
+          "测试队列中的准确率" if zh else "Test-cohort accuracy",
+          "Illustrative values on identical 0 to 100 percent scales: proposed method 87.4%, baseline model 81.2%.",c)
 
 
-def routes(mobile, zh):
-    w, h = (400, 223) if mobile else (920, 213)
-    x = 20 if mobile else 32
-    c = [rect(0, 0, w, h, "#f0f3f6", 8), label(x, 29, "03  /  EDITORIAL DECISIONS", size=12 if mobile else 14)]
-    rows = [("Language only","仅涉及语言","Edit directly","直接编辑",TEAL),
-            ("Conflicting evidence","发现证据冲突","Ask the author","向作者确认",RED),
-            ("Missing context","缺少上下文","Retain the claim","保留原主张",INK)]
-    for i,(ei,ci,eo,co,color) in enumerate(rows):
-        if mobile:
-            y = 72+i*59
-            c += [rule(x, y-26, 380, y-26, "#cdd7d9"),
-                  t(x, y+6, ci if zh else ei, 17),
-                  rule(182, y, 217, y, "#789191", 1.5),
-                  f'<path d="m211 {y-4} 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>',
-                  t(232, y+6, co if zh else eo, 17, color, extra='font-weight="600"')]
-        else:
-            left = x+i*297
-            if i: c.append(rule(left-18, 59, left-18, 182, "#c6d0d3"))
-            c += [t(left, 79, ci if zh else ei, 19), rule(left+5, 92, left+5, 120, "#789191", 1.5),
-                  f'<path d="m{left} 115 5 6 5-6" fill="none" stroke="#789191" stroke-width="1.5"/>',
-                  t(left, 162, co if zh else eo, 27, color, SANS if zh else SERIF)]
-    plate(f"decisions-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg", w, h,
-          "编辑判断" if zh else "Three editorial decisions",
-          "Edit language directly; query concrete conflicts when permitted; retain claims when context is missing.", c)
+def routes(mobile,zh):
+    data=[("措辞问题","Language only","直接编辑","Edit directly"),
+          ("证据冲突","Conflicting evidence","向作者确认","Ask the author"),
+          ("缺少上下文","Missing context","保留原主张","Keep the claim")]
+    # The three stems are alternatives from one origin, not three successive steps.
+    if mobile:
+        w,h=400,176
+        c=[]
+        for idx,(condition,en,action,eng) in enumerate(data):
+            y=37+51*idx
+            c += [path(f"M12 88C30 88 23 {y} 49 {y}","graph"),
+                  dot(50,y,2.8,"graph",True),
+                  txt(64,y+6,condition if zh else en,17,"soft"),
+                  txt(242 if not zh else 233,y+7,action if zh else eng,19,"violet",SERIF)]
+    else:
+        w,h=920,185
+        c=[txt(29,98,"编辑判断" if zh else "Editorial judgement",24,"ink",SERIF,'font-style="normal"' if zh else 'font-style="italic"')]
+        for idx,(condition,en,action,eng) in enumerate(data):
+            y=39+54*idx
+            c += [path(f"M252 92C303 92 289 {y} 344 {y}","graph",1.2),
+                  dot(345,y,3.4,"graph",True),
+                  txt(368,y+6,condition if zh else en,20,"soft"),
+                  line(549,y,590,y,"hair"),txt(615,y+9,action if zh else eng,26,"violet",SERIF)]
+    plate(f"decisions-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg",w,h,
+          "如何选择编辑方式" if zh else "Choosing an edit",
+          "Edit language directly, query concrete conflicts when allowed, and preserve a claim when context is missing.",c)
 
 
 if __name__ == "__main__":
-    for narrow in (False, True):
+    for narrow in (False,True):
         cover(narrow)
         proof(narrow)
-        for chinese in (False, True):
-            numbers(narrow, chinese)
-            routes(narrow, chinese)
+        for chinese in (False,True):
+            numbers(narrow,chinese)
+            routes(narrow,chinese)
