@@ -3,9 +3,9 @@
   <img src="assets/hero.svg" width="100%" alt="SAE · 标准学术英文编辑">
 </picture>
 
-在 Codex 中用 `$sae` 润色英文论文。让句子读起来更自然，也让每个数值、每处引文和每项结论都保留原意。
+<p align="center">用 <code>$sae</code> 在 Codex 中润色科研英文，保留数据、引文和结论的适用范围。</p>
 
-[English](README.md) · [快速上手](#快速上手) · [编辑规范](skills/sae/SKILL.md)
+<p align="center"><a href="README.md">English</a> &nbsp;·&nbsp; <a href="#快速上手">快速上手</a> &nbsp;·&nbsp; <a href="skills/sae/SKILL.md">编辑规范</a></p>
 
 ### 一处删改
 
@@ -57,4 +57,4 @@ cd sae
 
 </details>
 
-[行为案例与验证方法](tests/README.md) · [MIT 许可证](LICENSE)
+<p align="center"><a href="tests/README.md">行为案例与验证方法</a> &nbsp;·&nbsp; <a href="LICENSE">MIT 许可证</a></p>

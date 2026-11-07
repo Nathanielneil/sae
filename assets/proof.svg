@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="208" viewBox="0 0 920 208" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="204" viewBox="0 0 920 204" role="img" aria-labelledby="title desc">
 <title id="title">Original and edited manuscript excerpt</title>
 <desc id="desc">Of course is deleted. Do not establish is retained: the result does not establish full replacement.</desc>
 <style>
@@ -15,16 +15,16 @@
   }
 }
 </style>
-<rect width="920" height="208" fill="var(--paper)"/>
-<path d="M20 11L900 11" stroke="var(--hair)" stroke-width="1" fill="none"/>
-<path d="M20 197L900 197" stroke="var(--hair)" stroke-width="1" fill="none"/>
-<text x="30" y="50" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Original</text>
-<text x="30" y="92" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)"><tspan fill="var(--old)" text-decoration="line-through">Of course,</tspan> these results do not</text>
-<text x="30" y="126" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">establish that the method can fully</text>
-<text x="30" y="160" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">replace conventional methods.</text>
-<text x="489" y="50" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Edited</text>
-<text x="489" y="92" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">These results <tspan fill="var(--violet)" text-decoration="underline">do not establish</tspan></text>
-<text x="489" y="126" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">that the method can fully replace</text>
-<text x="489" y="160" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">conventional methods.</text>
-<path d="M434 115q10-3 23-1m-6-4 6 4-6 4" fill="none" stroke="var(--graph)" stroke-width="1.1" opacity="1" stroke-linecap="round"/>
+<rect width="920" height="204" fill="var(--paper)"/>
+<path d="M2 6L918 6" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M2 198L918 198" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<text x="2" y="44" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Original</text>
+<text x="2" y="89" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)"><tspan fill="var(--old)" text-decoration="line-through">Of course,</tspan> these results do not</text>
+<text x="2" y="123" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">establish that the method can fully</text>
+<text x="2" y="157" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">replace conventional methods.</text>
+<text x="492" y="44" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" font-style="italic">Edited</text>
+<text x="492" y="89" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">These results <tspan fill="var(--violet)" text-decoration="underline">do not establish</tspan></text>
+<text x="492" y="123" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">that the method can fully replace</text>
+<text x="492" y="157" font-size="24" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">conventional methods.</text>
+<path d="M448 116h24m-5-4 5 4-5 4" fill="none" stroke="var(--graph)" stroke-width="1.1" opacity="1" stroke-linecap="round"/>
 </svg>

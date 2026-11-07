@@ -3,9 +3,9 @@
   <img src="assets/hero.svg" width="100%" alt="SAE · Standard Academic Editing for scientific manuscripts">
 </picture>
 
-Edit scientific English with `$sae` in Codex. Refine a sentence while keeping its evidence, citations, and degree of certainty intact.
+<p align="center">Edit scientific English with <code>$sae</code> in Codex. Preserve the data, citations, and strength of each claim.</p>
 
-[中文](README.zh-CN.md) · [Quick start](#quick-start) · [Editing rules](skills/sae/SKILL.md)
+<p align="center"><a href="README.zh-CN.md">中文</a> &nbsp;·&nbsp; <a href="#quick-start">Quick start</a> &nbsp;·&nbsp; <a href="skills/sae/SKILL.md">Editing rules</a></p>
 
 ### In the margins
 
@@ -57,4 +57,4 @@ The skill is installed at `${CODEX_HOME:-$HOME/.codex}/skills/sae`. Start a new 
 
 </details>
 
-[Behavioral cases & validation](tests/README.md) · [MIT license](LICENSE)
+<p align="center"><a href="tests/README.md">Behavioral cases &amp; validation</a> &nbsp;·&nbsp; <a href="LICENSE">MIT license</a></p>

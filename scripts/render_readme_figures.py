@@ -1,6 +1,7 @@
 """Draw SAE's README figures, including narrow layouts; Python standard library only."""
 from html import escape
 from pathlib import Path
+from typing import NamedTuple
 
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 SERIF = "Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif"
@@ -19,6 +20,32 @@ PALETTE = """
   }
 }
 """
+
+
+class Grid(NamedTuple):
+    """Two equal columns; the 2-unit edge protects italic glyphs from clipping."""
+    width: int
+    gutter: int
+    edge: int = 2
+
+    @property
+    def column(self):
+        return (self.width - 2 * self.edge - self.gutter) // 2
+
+    def left(self, index):
+        return self.edge + index * (self.column + self.gutter)
+
+    def center(self, index):
+        return self.left(index) + self.column / 2
+
+
+def grid(mobile):
+    return Grid(400, 24) if mobile else Grid(920, 64)
+
+
+CENTER = 'text-anchor="middle"'
+ITALIC = 'font-style="italic"'
+MIDLINE = 'dominant-baseline="central"'
 
 
 def txt(x, y, words, size, color="ink", font=SANS, attrs=""):
@@ -84,18 +111,20 @@ def cover(mobile):
             f'<mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="{w}" height="{h}">'
             f'<rect width="{w}" height="{h}" fill="url(#veil)"/></mask></defs>')
     c=[wash,f'<ellipse cx="{w*.81}" cy="{h*.50}" rx="{w*.52}" ry="{h*.76}" fill="url(#wash)"/>']
+    # Center the type within the title field, leaving the right field for the silk.
+    axis = 110 if mobile else grid(False).center(0)
+    art = silk()
     if mobile:
-        c += [f'<g mask="url(#fade)"><g transform="translate(37 17) scale(.39 .57)">{silk()}</g></g>',
-              txt(14,38,"SCIENTIFIC ENGLISH",10.5,"soft",attrs='letter-spacing="2" word-spacing="3"'),
-              txt(9,127,"SAE",86,"ink",SERIF,'letter-spacing="-4"'),
-              txt(15,167,"Standard Academic Editing",20,"soft",SERIF,'font-style="italic"'),
-              line(15,195,57,195,"graph")]
-    else:
-        c += [f'<g mask="url(#fade)">{silk()}</g>',
-              txt(30,52,"SCIENTIFIC ENGLISH",12,"soft",attrs='letter-spacing="2.6" word-spacing="3"'),
-              txt(22,180,"SAE",133,"ink",SERIF,'letter-spacing="-6"'),
-              txt(31,222,"Standard Academic Editing",31,"soft",SERIF,'font-style="italic"'),
-              line(32,254,94,254,"graph")]
+        art = f'<g transform="translate(37 17) scale(.39 .57)">{art}</g>'
+    half_rule, rule_y = (21,193) if mobile else (31,251)
+    c += [f'<g mask="url(#fade)">{art}</g>',
+          txt(axis,38 if mobile else 52,"SCIENTIFIC ENGLISH",10.5 if mobile else 12,"soft",
+              attrs=f'{CENTER} letter-spacing="2" word-spacing="3"'),
+          txt(axis,127 if mobile else 180,"SAE",86 if mobile else 133,"ink",SERIF,
+              f'{CENTER} letter-spacing="{-4 if mobile else -6}"'),
+          txt(axis,161 if mobile else 221,"Standard Academic Editing",20 if mobile else 31,
+              "soft",SERIF,f'{CENTER} {ITALIC}'),
+          line(axis-half_rule,rule_y,axis+half_rule,rule_y,"graph")]
     plate("hero-mobile.svg" if mobile else "hero.svg",w,h,"SAE · Standard Academic Editing",
           "The SAE wordmark beside two folded ribbons drawn in fine violet lines.",c)
 
@@ -114,46 +143,51 @@ def wording(x,y,parts,size):
 
 
 def proof(mobile):
+    g = grid(mobile)
+    w, left, right, mid = g.width, g.edge, g.width - g.edge, g.width // 2
     if mobile:
-        w,h=400,286
-        c=[line(12,9,388,9),txt(12,38,"Original",16,"soft",SERIF,'font-style="italic"'),
-           wording(12,68,[("delete","Of course,"),(""," these results do not establish")],20),
-           txt(12,94,"that the method can fully replace",20,font=SERIF),
-           txt(12,120,"conventional methods.",20,font=SERIF),
-           line(12,142,44,142,"graph"),
-           txt(12,168,"Edited",16,"violet",SERIF,'font-style="italic"'),
-           wording(12,198,[("","These results "),("keep","do not establish"),(""," that")],20),
-           txt(12,224,"the method can fully replace",20,font=SERIF),
-           txt(12,250,"conventional methods.",20,font=SERIF), line(12,278,388,278)]
-    else:
-        w,h=920,208
-        c=[line(20,11,900,11),line(20,197,900,197)]
-        for x, tag, color, lines in [
-            (30,"Original","soft",[[("delete","Of course,"),(""," these results do not")],
-                                  [("","establish that the method can fully")],[("","replace conventional methods.")]]),
-            (489,"Edited","violet",[[("","These results "),("keep","do not establish")],
-                                    [("","that the method can fully replace")],[("","conventional methods.")]])]:
-            c.append(txt(x,50,tag,19,color,SERIF,'font-style="italic"'))
+        h=272
+        c=[line(left,4,right,4), line(mid-16,h//2,mid+16,h//2,"graph"), line(left,h-4,right,h-4)]
+        columns = [
+            ("Original","soft",[[("delete","Of course,"),(""," these results do not establish")],
+                                 [("","that the method can fully replace")],[("","conventional methods.")]]),
+            ("Edited","violet",[[("","These results "),("keep","do not establish"),(""," that")],
+                                [("","the method can fully replace")],[("","conventional methods.")]])]
+        for i,(tag,color,lines) in enumerate(columns):
+            top = i * 132
+            c.append(txt(left,top+35,tag,16,color,SERIF,ITALIC))
             for j,words in enumerate(lines):
-                c.append(wording(x,92+j*34,words,24))
-        c.append(path("M434 115q10-3 23-1m-6-4 6 4-6 4","graph",1.1))
+                c.append(wording(left,top+65+j*26,words,20))
+    else:
+        h=204
+        c=[line(left,6,right,6),line(left,h-6,right,h-6)]
+        for x, tag, color, lines in [
+            (g.left(0),"Original","soft",[[("delete","Of course,"),(""," these results do not")],
+                                  [("","establish that the method can fully")],[("","replace conventional methods.")]]),
+            (g.left(1),"Edited","violet",[[("","These results "),("keep","do not establish")],
+                                    [("","that the method can fully replace")],[("","conventional methods.")]])]:
+            c.append(txt(x,44,tag,19,color,SERIF,ITALIC))
+            for j,words in enumerate(lines):
+                c.append(wording(x,89+j*34,words,24))
+        c.append(path(f"M{mid-12} 116h24m-5-4 5 4-5 4","graph",1.1))
     plate("proof-mobile.svg" if mobile else "proof.svg",w,h,"Original and edited manuscript excerpt",
           "Of course is deleted. Do not establish is retained: the result does not establish full replacement.",c)
 
 
 def numbers(mobile,zh):
-    w,h=(400,168) if mobile else (920,185)
-    margin=12 if mobile else 30
-    c=[txt(margin,27 if mobile else 36,"测试队列中的准确率" if zh else "Accuracy in the test cohort",
-           16 if mobile else 19,"soft",SERIF)]
+    g = grid(mobile)
+    w,h=g.width,164 if mobile else 180
+    c=[txt(w/2,26 if mobile else 32,"测试队列中的准确率" if zh else "Accuracy in the test cohort",
+           16 if mobile else 19,"soft",SERIF,CENTER)]
     for i,(model,value) in enumerate([("所提方法" if zh else "Proposed method",87.4),
                                       ("基线模型" if zh else "Baseline model",81.2)]):
-        x=(12+201*i) if mobile else (30+454*i)
-        baseline=84 if mobile else 105
-        c += [txt(x,baseline,f"{value:.1f}%",43 if mobile else 59,"violet" if i==0 else "ink",SERIF),
-              txt(x+2,baseline+(25 if mobile else 29),model,16 if mobile else 19,"soft")]
-        length=160 if mobile else 358
-        y=139 if mobile else 163
+        axis = g.center(i)
+        baseline=83 if mobile else 101
+        c += [txt(axis,baseline,f"{value:.1f}%",43 if mobile else 59,"violet" if i==0 else "ink",SERIF,CENTER),
+              txt(axis,baseline+(27 if mobile else 30),model,16 if mobile else 19,"soft",attrs=CENTER)]
+        length = g.column - 2 * (12 if mobile else 28)
+        x = axis - length / 2
+        y=137 if mobile else 159
         c += [line(x,y,x+length,y),line(x,y,x+length*value/100,y,"graph",1.6),
               dot(round(x+length*value/100,2),y,3.8,"violet" if i==0 else "soft",hollow=i==1)]
     plate(f"values-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg",w,h,
@@ -166,24 +200,20 @@ def routes(mobile,zh):
           ("证据冲突","Conflicting evidence","向作者确认","Ask the author"),
           ("缺少上下文","Missing context","保留原主张","Keep the claim")]
     # The three stems are alternatives from one origin, not three successive steps.
-    if mobile:
-        w,h=400,176
-        c=[]
-        for idx,(condition,en,action,eng) in enumerate(data):
-            y=37+51*idx
-            c += [path(f"M12 88C30 88 23 {y} 49 {y}","graph"),
-                  dot(50,y,2.8,"graph",True),
-                  txt(64,y+6,condition if zh else en,17,"soft"),
-                  txt(242 if not zh else 233,y+7,action if zh else eng,19,"violet",SERIF)]
-    else:
-        w,h=920,185
-        c=[txt(29,98,"编辑判断" if zh else "Editorial judgement",24,"ink",SERIF,'font-style="normal"' if zh else 'font-style="italic"')]
-        for idx,(condition,en,action,eng) in enumerate(data):
-            y=39+54*idx
-            c += [path(f"M252 92C303 92 289 {y} 344 {y}","graph",1.2),
-                  dot(345,y,3.4,"graph",True),
-                  txt(368,y+6,condition if zh else en,20,"soft"),
-                  line(549,y,590,y,"hair"),txt(615,y+9,action if zh else eng,26,"violet",SERIF)]
+    g = grid(mobile)
+    w,h=g.width,168 if mobile else 176
+    row_mid, pitch = h // 2, 49 if mobile else 52
+    origin, tip, condition_x, action_x = (g.edge,31,44,234) if mobile else (220,302,323,629)
+    c=[] if mobile else [txt(g.edge,row_mid,"编辑判断" if zh else "Editorial judgement",24,"ink",
+                             SERIF,MIDLINE if zh else f"{MIDLINE} {ITALIC}")]
+    for idx,(condition,en,action,eng) in enumerate(data):
+        y=row_mid+(idx-1)*pitch
+        c += [path(f"M{origin} {row_mid}C{origin+(tip-origin)*.54} {row_mid} {origin+(tip-origin)*.50} {y} {tip} {y}","graph"),
+              dot(tip,y,2.8 if mobile else 3.4,"graph",True),
+              txt(condition_x,y,condition if zh else en,17 if mobile else 20,"soft",attrs=MIDLINE),
+              txt(action_x,y,action if zh else eng,19 if mobile else 26,"violet",SERIF,MIDLINE)]
+        if not mobile:
+            c.append(line(547,y,599,y))
     plate(f"decisions-{'zh' if zh else 'en'}{'-mobile' if mobile else ''}.svg",w,h,
           "如何选择编辑方式" if zh else "Choosing an edit",
           "Edit language directly, query concrete conflicts when allowed, and preserve a claim when context is missing.",c)
