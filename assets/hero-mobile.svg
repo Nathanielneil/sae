@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="180" viewBox="0 0 400 180" role="img" aria-labelledby="title desc">
+  <title id="title">SAE · Standard Academic Editing</title>
+  <desc id="desc">A marked-up manuscript and editing pencil.</desc>
+  <rect x="0" y="0" width="400" height="180" rx="8" fill="#172f3a"/>
+  <text x="20" y="28" fill="#b5dace" font-family="'SFMono-Regular',Consolas,monospace" font-size="10" font-weight="600" letter-spacing="1">CODEX  /  SKILL</text>
+  <text x="16" y="103" fill="#fbf4df" font-family="Georgia,'Times New Roman',serif" font-size="81" >SAE</text>
+  <text x="20" y="135" fill="#e0ebe3" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" >Standard Academic</text>
+  <text x="20" y="158" fill="#e0ebe3" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" >Editing</text>
+<g transform="translate(207 40) scale(.65)"><g transform="rotate(-9 138 88)">
+  <rect x="19" y="16" width="222" height="154" rx="3" fill="#708b89"/>
+  <rect x="12" y="8" width="222" height="154" rx="3" fill="#ccd7cb"/>
+</g>
+<g transform="rotate(7 130 87)">
+  <rect x="28" y="11" width="220" height="152" rx="3" fill="#fbf3da"/>
+  <rect x="44" y="28" width="55" height="4" rx="0" fill="#25454d"/>
+  <rect x="44" y="39" width="126" height="2" rx="0" fill="#adc0af"/>
+  <rect x="44" y="60" width="87" height="5" rx="0" fill="#6c8581"/>
+  <rect x="138" y="60" width="53" height="5" rx="0" fill="#a9b9ac"/>
+  <rect x="44" y="78" width="46" height="5" rx="0" fill="#89a19a"/>
+  <rect x="97" y="78" width="94" height="5" rx="0" fill="#89a19a"/>
+  <path d="M92 82 L135 77" fill="none" stroke="#c94e3d" stroke-width="2.7"/>
+<path d="M96 86q18 5 38 0m-25 9 6-5 5 4" fill="none" stroke="#b83c32" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="44" y="103" width="128" height="5" rx="0" fill="#a9b9ac"/>
+  <rect x="44" y="122" width="83" height="5" rx="0" fill="#a9b9ac"/>
+<path d="m193 98 5 5 10-12" fill="none" stroke="#177566" stroke-width="3.5" stroke-linecap="round"/>
+</g>
+<g transform="translate(137 122) rotate(-35)">
+<path d="M0 0 19-5h113q5 0 5 5t-5 5H19z" fill="#e87e62"/>
+<path d="M19 0h113v5H19z" fill="#c85548"/><path d="M0 0l19-5v10z" fill="#eac6a0"/><path d="m0 0 6-1.6V1.6z" fill="#1e3541"/>
+<path d="M121-5v10" stroke="#ae4139" stroke-width="3"/></g></g>
+</svg>

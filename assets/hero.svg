@@ -1,20 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="300" viewBox="0 0 1100 300" role="img" aria-labelledby="title desc">
-  <title id="title">SAE — Standard Academic Editing</title>
-  <desc id="desc">Clear prose. Intact meaning. A restrained editorial masthead in deep green and warm ivory.</desc>
-  <rect width="1100" height="300" rx="12" fill="#f5f3ed"/>
-  <rect x="0.5" y="0.5" width="1099" height="299" rx="11.5" fill="none" stroke="#dedfd5"/>
-  <path d="M52 48H1048" stroke="#244b40" stroke-width="1.5"/>
-  <g fill="#244b40">
-    <text x="52" y="79" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2.2">SCIENTIFIC ENGLISH</text>
-    <text x="1048" y="79" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2.2">CODEX SKILL</text>
-    <text x="46" y="205" font-family="Georgia, 'Times New Roman', serif" font-size="126" letter-spacing="-6">SAE</text>
-    <text x="604" y="148" font-family="Georgia, 'Times New Roman', serif" font-size="39">Clear prose.</text>
-    <text x="604" y="197" font-family="Georgia, 'Times New Roman', serif" font-size="39">Intact meaning.</text>
-  </g>
-  <path d="M547 110V207" stroke="#ccd2c6"/>
-  <path d="M52 238H1048" stroke="#ccd2c6"/>
-  <text x="52" y="268" fill="#52665a" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2">STANDARD ACADEMIC EDITING</text>
-  <g stroke="#6f8b73" stroke-width="1.5" fill="none" stroke-linecap="round">
-    <path d="M1008 258h12m-6-6v12M1036 252v12m-6-6h12"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="248" viewBox="0 0 920 248" role="img" aria-labelledby="title desc">
+  <title id="title">SAE · Standard Academic Editing</title>
+  <desc id="desc">A marked-up manuscript and editing pencil.</desc>
+  <rect x="0" y="0" width="920" height="248" rx="10" fill="#172f3a"/>
+  <path d="M38 49 L417 49" fill="none" stroke="#52716f" stroke-width="1"/>
+  <text x="40" y="36" fill="#b5dace" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">CODEX  /  MANUSCRIPT EDITING</text>
+  <text x="31" y="161" fill="#fbf4df" font-family="Georgia,'Times New Roman',serif" font-size="120" >SAE</text>
+  <text x="40" y="203" fill="#e0ebe3" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="27" >Standard Academic Editing</text>
+<g transform="translate(528 16) scale(1.24)"><g transform="rotate(-9 138 88)">
+  <rect x="19" y="16" width="222" height="154" rx="3" fill="#708b89"/>
+  <rect x="12" y="8" width="222" height="154" rx="3" fill="#ccd7cb"/>
+</g>
+<g transform="rotate(7 130 87)">
+  <rect x="28" y="11" width="220" height="152" rx="3" fill="#fbf3da"/>
+  <rect x="44" y="28" width="55" height="4" rx="0" fill="#25454d"/>
+  <rect x="44" y="39" width="126" height="2" rx="0" fill="#adc0af"/>
+  <rect x="44" y="60" width="87" height="5" rx="0" fill="#6c8581"/>
+  <rect x="138" y="60" width="53" height="5" rx="0" fill="#a9b9ac"/>
+  <rect x="44" y="78" width="46" height="5" rx="0" fill="#89a19a"/>
+  <rect x="97" y="78" width="94" height="5" rx="0" fill="#89a19a"/>
+  <path d="M92 82 L135 77" fill="none" stroke="#c94e3d" stroke-width="2.7"/>
+<path d="M96 86q18 5 38 0m-25 9 6-5 5 4" fill="none" stroke="#b83c32" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="44" y="103" width="128" height="5" rx="0" fill="#a9b9ac"/>
+  <rect x="44" y="122" width="83" height="5" rx="0" fill="#a9b9ac"/>
+<path d="m193 98 5 5 10-12" fill="none" stroke="#177566" stroke-width="3.5" stroke-linecap="round"/>
+</g>
+<g transform="translate(137 122) rotate(-35)">
+<path d="M0 0 19-5h113q5 0 5 5t-5 5H19z" fill="#e87e62"/>
+<path d="M19 0h113v5H19z" fill="#c85548"/><path d="M0 0l19-5v10z" fill="#eac6a0"/><path d="m0 0 6-1.6V1.6z" fill="#1e3541"/>
+<path d="M121-5v10" stroke="#ae4139" stroke-width="3"/></g></g>
 </svg>

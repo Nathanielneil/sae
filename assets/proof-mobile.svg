@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="298" viewBox="0 0 400 298" role="img" aria-labelledby="title desc">
+  <title id="title">Removing an empty preface</title>
+  <desc id="desc">Remove Of course; retain the statement that the results do not establish full replacement.</desc>
+  <rect x="0" y="0" width="400" height="298" rx="8" fill="#f9f5eb"/>
+  <text x="20" y="29" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">01  /  MANUSCRIPT PROOF</text>
+  <path d="M20 42 L380 42" fill="none" stroke="#c7c6b9" stroke-width="1"/>
+  <text x="20" y="66" fill="#a13932" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">ORIGINAL</text>
+<text x="20" y="94" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19"><tspan fill="#a13932" text-decoration="line-through">Of course,</tspan> these results do not establish</text>
+  <text x="20" y="120" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19" >that the method can fully replace</text>
+  <text x="20" y="146" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19" >conventional methods.</text>
+  <path d="M20 164 L380 164" fill="none" stroke="#dad6c6" stroke-width="1"/>
+  <text x="20" y="188" fill="#13665a" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">EDITED</text>
+<text x="20" y="216" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19">These results <tspan fill="#13665a" text-decoration="underline">do not establish</tspan> that</text>
+  <text x="20" y="242" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19" >the method can fully replace</text>
+  <text x="20" y="268" fill="#172f3a" font-family="Georgia,'Times New Roman',serif" font-size="19" >conventional methods.</text>
+</svg>

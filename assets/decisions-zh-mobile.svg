@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="223" viewBox="0 0 400 223" role="img" aria-labelledby="title desc">
+  <title id="title">编辑判断</title>
+  <desc id="desc">Edit language directly; query concrete conflicts when permitted; retain claims when context is missing.</desc>
+  <rect x="0" y="0" width="400" height="223" rx="8" fill="#f0f3f6"/>
+  <text x="20" y="29" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="12" font-weight="600" letter-spacing="1">03  /  EDITORIAL DECISIONS</text>
+  <path d="M20 46 L380 46" fill="none" stroke="#cdd7d9" stroke-width="1"/>
+  <text x="20" y="78" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >仅涉及语言</text>
+  <path d="M182 72 L217 72" fill="none" stroke="#789191" stroke-width="1.5"/>
+<path d="m211 68 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
+  <text x="232" y="78" fill="#13665a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">直接编辑</text>
+  <path d="M20 105 L380 105" fill="none" stroke="#cdd7d9" stroke-width="1"/>
+  <text x="20" y="137" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >发现证据冲突</text>
+  <path d="M182 131 L217 131" fill="none" stroke="#789191" stroke-width="1.5"/>
+<path d="m211 127 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
+  <text x="232" y="137" fill="#a13932" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">向作者确认</text>
+  <path d="M20 164 L380 164" fill="none" stroke="#cdd7d9" stroke-width="1"/>
+  <text x="20" y="196" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" >缺少上下文</text>
+  <path d="M182 190 L217 190" fill="none" stroke="#789191" stroke-width="1.5"/>
+<path d="m211 186 6 4-6 4" fill="none" stroke="#789191" stroke-width="1.5"/>
+  <text x="232" y="196" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="600">保留原主张</text>
+</svg>

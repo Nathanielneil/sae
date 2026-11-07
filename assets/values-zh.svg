@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="195" viewBox="0 0 920 195" role="img" aria-labelledby="title desc">
+  <title id="title">测试队列中的准确率</title>
+  <desc id="desc">Proposed method: 87.4%. Baseline model: 81.2%. Both bars use the same 0–100% scale.</desc>
+  <rect x="0" y="0" width="920" height="195" rx="8" fill="#edf4ef"/>
+  <text x="32" y="29" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" font-weight="600" letter-spacing="1">02  /  DATA CHECK</text>
+  <text x="888" y="29" fill="#13665a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" text-anchor="end">测试队列 · 准确率</text>
+  <text x="32" y="89" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >所提方法</text>
+  <text x="244" y="89" fill="#13665a" font-family="'SFMono-Regular',Consolas,monospace" font-size="21" text-anchor="end" font-weight="bold">87.4%</text>
+  <rect x="278" y="83" width="587" height="8" rx="4" fill="#d5e1d9"/>
+  <rect x="278" y="83" width="513.038" height="8" rx="4" fill="#13665a"/>
+  <text x="32" y="140" fill="#172f3a" font-family="Inter,Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" >基线模型</text>
+  <text x="244" y="140" fill="#506979" font-family="'SFMono-Regular',Consolas,monospace" font-size="21" text-anchor="end" font-weight="bold">81.2%</text>
+  <rect x="278" y="134" width="587" height="8" rx="4" fill="#d5e1d9"/>
+  <rect x="278" y="134" width="476.644" height="8" rx="4" fill="#506979"/>
+  <path d="M278.0 157 L278.0 162" fill="none" stroke="#81978e" stroke-width="1"/>
+  <text x="278.0" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="start">0%</text>
+  <path d="M571.5 157 L571.5 162" fill="none" stroke="#81978e" stroke-width="1"/>
+  <text x="571.5" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="middle">50%</text>
+  <path d="M865.0 157 L865.0 162" fill="none" stroke="#81978e" stroke-width="1"/>
+  <text x="865.0" y="176" fill="#50656b" font-family="'SFMono-Regular',Consolas,monospace" font-size="14" text-anchor="end">100%</text>
+</svg>

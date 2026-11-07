@@ -1,45 +1,40 @@
-<div align="center">
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/hero-mobile.svg">
+  <img src="assets/hero.svg" width="100%" alt="SAE · Standard Academic Editing for scientific manuscripts">
+</picture>
 
-<img src="assets/hero.svg" alt="SAE — Standard Academic Editing. Clear prose. Intact meaning." width="100%">
+**SAE edits scientific English in Codex.** Give it a manuscript passage to improve the wording while preserving what was measured, who reported it, and how certain the finding is.
 
-**Careful English editing for scientific manuscripts.**<br>
-A reusable Codex skill for clearer language, faithful claims, and precise scope.
+[中文](README.zh-CN.md)　·　[Quick start](#quick-start)　·　[Editing rules](skills/sae/SKILL.md)
 
-[中文](README.zh-CN.md) · [Example](#a-careful-edit) · [Install](#install) · [Editing rules](skills/sae/SKILL.md)
+## An edit under the microscope
 
-[![Checks](https://img.shields.io/github/actions/workflow/status/Nathanielneil/sae/validate.yml?branch=main&style=flat-square&label=structure%20%26%20fixtures)](https://github.com/Nathanielneil/sae/actions/workflows/validate.yml)
-[![MIT](https://img.shields.io/badge/license-MIT-47665b?style=flat-square)](LICENSE)
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/proof-mobile.svg">
+  <img src="assets/proof.svg" width="100%" alt="Original: Of course, these results do not establish that the method can fully replace conventional methods. Edited: These results do not establish that the method can fully replace conventional methods.">
+</picture>
 
-</div>
+“Of course” can go. “Do not establish” must stay: the study has not shown that the method can fully replace conventional methods.
 
-## A careful edit
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/values-en-mobile.svg">
+  <img src="assets/values-en.svg" width="100%" alt="In the same example test cohort, accuracy is 87.4% for the proposed method and 81.2% for the baseline.">
+</picture>
 
-SAE improves grammar, concision, terminology, and local paragraph flow. It preserves scientific claims, numerical details, citations, and necessary uncertainty.
+In this constructed example, **87.4%** belongs to the proposed method and **81.2%** to the baseline. SAE checks those assignments after editing; citations must likewise stay with the claims they support. [Read the full before-and-after passage →](examples/abstract.md)
 
-**Before**
+## When the evidence is unclear
 
-> It should be emphasized that the proposed method achieved an accuracy of 87.4% in the test cohort, whereas the baseline model achieved an accuracy of 81.2%. Of course, these results do not establish that the method can fully replace conventional methods.
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/decisions-en-mobile.svg">
+  <img src="assets/decisions-en.svg" width="100%" alt="Edit language directly. For conflicting evidence, retain the claim and query the author when permitted. If only context is missing, retain the claim.">
+</picture>
 
-**After**
+A missing Methods section does not invalidate an abstract. If the supplied text actually conflicts with a claim, SAE keeps the claim and asks a focused question when permitted. Only the author can authorize a change to its scientific meaning.
 
-> In the test cohort, the proposed method achieved an accuracy of 87.4%, compared with 81.2% for the baseline model. These results do not establish that the method can fully replace conventional methods.
+**For clean text only:** SAE edits around unresolved ambiguity. It asks for clarification first only if the entire requested edit depends on missing information.
 
-The empty prefaces disappear. Both values, their model assignments, and the limit on replacement remain. [Read the annotated examples →](examples/abstract.md)
-
-## Editing boundaries
-
-| Situation | SAE's approach |
-|---|---|
-| Wording can improve without changing the claim | Edit directly; leave already clear sentences alone. |
-| A change would alter a mechanism, conclusion, or claim strength | Retain the content and ask the author when queries are allowed. |
-| Supporting material is absent from an excerpt | Treat support as unknown; do not infer that the claim is wrong. |
-| The user wants only clean text | Make safe edits and preserve unresolved meaning without comments or guesses. |
-
-Values stay with their groups and conditions; citations stay with their claims. Each necessary qualification keeps its scope. Substantive scientific changes require explicit authorization.
-
-SAE covers titles, abstracts, manuscript sections, captions, cover letters, and reviewer responses. Its scope is medium-intensity language editing; translation, fact-checking, peer review, and scientific revision are separate tasks. [Full specification →](skills/sae/SKILL.md)
-
-## Install
+## Quick start
 
 ```bash
 git clone https://github.com/Nathanielneil/sae.git
@@ -47,48 +42,15 @@ cd sae
 ./scripts/install.sh
 ```
 
-The installer uses `${CODEX_HOME:-$HOME/.codex}/skills/sae`. Open a new Codex session if the skill is not yet available.
+In Codex, paste your passage after a request such as:
+
+> Use $sae to edit this Discussion section. Preserve claim strength and return the edited text followed by any necessary author queries.
 
 <details>
-<summary>Replacing an installation or installing manually</summary>
+<summary>Installation details and updates</summary>
 
-Existing installations are protected. To deliberately replace one:
-
-```bash
-./scripts/install.sh --force
-```
-
-For a manual installation, first make sure the destination does not already exist:
-
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/sae "${CODEX_HOME:-$HOME/.codex}/skills/sae"
-```
+The skill is installed at `${CODEX_HOME:-$HOME/.codex}/skills/sae`. Start a new Codex session if it does not appear. To replace an existing installation, run `./scripts/install.sh --force`. For manual installation, copy `skills/sae/` into the Codex skills directory after checking that the destination does not already exist.
 
 </details>
 
-## Use
-
-```text
-Use $sae to edit this Discussion section. Preserve the scientific meaning,
-data, and claim strength. Return the edited text and any necessary author queries.
-
-[Paste manuscript text here]
-```
-
-Add a target journal, English variant, or preferred output format when useful. To suppress commentary, request **only the edited text**. SAE will preserve passages it cannot safely disambiguate. If the entire requested transformation depends on missing scientific information, it will ask for that information first.
-
-## Development
-
-```bash
-python3 scripts/validate_skill.py
-python3 scripts/prepare_behavior_eval.py
-```
-
-These checks validate the skill package and behavioral case definitions. **They do not score model editing quality.** The [behavioral suite](tests/README.md) supplies isolated requests and criteria for evaluating claims, ambiguity, and scientific relationships.
-
-Keep project documentation and tests outside `skills/sae/`. Contributions should include a focused case when they change editing behavior.
-
----
-
-[Editing rules](skills/sae/SKILL.md) · [Examples](examples/abstract.md) · [Behavioral tests](tests/README.md) · [MIT license](LICENSE)
+[Behavioral cases & validation](tests/README.md)　·　[MIT license](LICENSE)
