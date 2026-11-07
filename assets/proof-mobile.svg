@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="272" viewBox="0 0 400 272" role="img" aria-labelledby="title desc">
+<title id="title">Original and edited manuscript excerpt</title>
+<desc id="desc">Of course is deleted. Do not establish is retained: the result does not establish full replacement.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="400" height="272" fill="var(--paper)"/>
+<path d="M2 4L398 4" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M184 136L216 136" stroke="var(--graph)" stroke-width="1" fill="none"/>
+<path d="M2 268L398 268" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<text x="2" y="35" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="16" font-style="italic">Original</text>
+<text x="2" y="65" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)"><tspan fill="var(--old)" text-decoration="line-through">Of course,</tspan> these results do not establish</text>
+<text x="2" y="91" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">that the method can fully replace</text>
+<text x="2" y="117" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">conventional methods.</text>
+<text x="2" y="167" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="16" font-style="italic">Edited</text>
+<text x="2" y="197" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">These results <tspan fill="var(--violet)" text-decoration="underline">do not establish</tspan> that</text>
+<text x="2" y="223" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">the method can fully replace</text>
+<text x="2" y="249" font-size="20" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" fill="var(--ink)">conventional methods.</text>
+</svg>

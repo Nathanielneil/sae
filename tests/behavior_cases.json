@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "SAE-001",
+      "focus": "Already clear prose",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Results section.",
+      "source": "Model A achieved an accuracy of 87.4% in the test cohort.",
+      "checks": [
+        "The sentence remains unchanged apart from inconsequential whitespace.",
+        "The test-cohort scope, metric, model, and value are preserved."
+      ],
+      "forbidden": [
+        "Stylistic rewriting without a clarity or correctness benefit.",
+        "New interpretation of performance."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-002",
+      "focus": "Filler versus a substantive limitation",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Abstract excerpt.",
+      "source": "It should be emphasized that the proposed method achieved an accuracy of 87.4% in the test cohort, whereas the baseline model achieved an accuracy of 81.2%. Of course, these results do not establish that the method can fully replace conventional methods.",
+      "checks": [
+        "Empty introductory emphasis is removed.",
+        "87.4% remains the proposed method's accuracy and 81.2% remains the baseline model's accuracy in the test cohort.",
+        "The specific restriction on inferring full replacement is retained."
+      ],
+      "forbidden": [
+        "Deleting the replacement limitation or replacing it only with a generic scope phrase.",
+        "Adding statistical significance or a newly calculated difference."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-003",
+      "focus": "Untested mechanism without correction authority",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Discussion. Durability was measured. Oxidation and the proposed mechanism were not tested. The request is for language editing.",
+      "source": "The coating increases durability by preventing oxidation.",
+      "checks": [
+        "The mechanism and its original assertion strength are retained pending author confirmation.",
+        "The query identifies the mismatch between the asserted mechanism and what was tested."
+      ],
+      "forbidden": [
+        "Deleting the oxidation mechanism.",
+        "Silently adding may, might, or another qualification to the manuscript claim.",
+        "Certifying the mechanism as established."
+      ],
+      "query": "required",
+      "query_topics": [
+        "Whether other evidence supports the oxidation mechanism or the author intends it as a hypothesis."
+      ]
+    },
+    {
+      "id": "SAE-004",
+      "focus": "Overreach visible in supplied evidence",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Results show a comparison with one baseline on one dataset. No other methods or settings were evaluated.",
+      "source": "These findings establishes that our method outperforms every existing method in all settings.",
+      "checks": [
+        "The agreement error is corrected.",
+        "The universal superiority proposition remains pending an author decision.",
+        "A query identifies the mismatch with the limited comparison."
+      ],
+      "forbidden": [
+        "Silently narrowing the claim to the one tested baseline or dataset.",
+        "Deleting the conclusion or inventing additional comparisons."
+      ],
+      "query": "required",
+      "query_topics": [
+        "The evidence for superiority over every method in all settings, or authorization to narrow that claim."
+      ]
+    },
+    {
+      "id": "SAE-005",
+      "focus": "Unknown support in an excerpt",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Only this abstract sentence is supplied; the rest of the manuscript is unavailable.",
+      "source": "We presents a novel calibration method for low-light imaging.",
+      "checks": [
+        "Presents is corrected to present.",
+        "The novelty claim and low-light imaging scope remain."
+      ],
+      "forbidden": [
+        "Deleting or weakening novelty because supporting literature is absent.",
+        "Querying novelty solely because the rest of the paper is not provided.",
+        "Claiming novelty has been verified."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-006",
+      "focus": "Local ambiguity with queries",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Results section. The supplied text contains no model identifiers or other antecedent for It.",
+      "source": "Both models was evaluated at day 7. It had the lower error.",
+      "checks": [
+        "Was is corrected to were.",
+        "Day 7 and the lower-error comparison remain.",
+        "The unresolved model identity is preserved in the edited text and queried separately."
+      ],
+      "forbidden": [
+        "Choosing a model, dropping the second sentence, or weakening the observed comparison.",
+        "Stopping the entire edit instead of repairing the first sentence."
+      ],
+      "query": "required",
+      "query_topics": [
+        "Which model had the lower error at day 7."
+      ]
+    },
+    {
+      "id": "SAE-007",
+      "focus": "Local ambiguity with clean text only",
+      "request": "Use $sae to edit this passage. Return only the edited text, without headings, comments, queries, or explanations.",
+      "context": "Results section. The supplied text contains no model identifiers or other antecedent for It.",
+      "source": "Both models was evaluated at day 7. It had the lower error.",
+      "checks": [
+        "Was is corrected to were.",
+        "The unresolved model identity, day 7, and the lower-error comparison are preserved.",
+        "The response contains only manuscript text."
+      ],
+      "forbidden": [
+        "Choosing a model or deleting the ambiguous content.",
+        "Adding a query, bracketed comment, explanation, or disclaimer.",
+        "Refusing to perform the safe grammar edit."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-008",
+      "focus": "Numerical relationships",
+      "request": "Use $sae to combine the two day-14 sentences into one sentence and edit the passage for flow. Preserve every scientific detail. Return only the edited text.",
+      "context": "Results section.",
+      "source": "At day 14, model A (n = 42) had a sensitivity of 87.4%. At day 14, model B (n = 45) had a sensitivity of 81.2%. At day 28, specificity was 90.1% for model A and 92.3% for model B.",
+      "checks": [
+        "At day 14: model A has n = 42 and sensitivity 87.4%; model B has n = 45 and sensitivity 81.2%.",
+        "At day 28: specificity is 90.1% for A and 92.3% for B.",
+        "Metric, group, time, and value mappings survive any reordering.",
+        "The two day-14 sentences are combined as requested, without merging their entity assignments."
+      ],
+      "forbidden": [
+        "Swapping values, sample sizes, metrics, groups, or time points.",
+        "Calculating or adding a percentage-point difference or a relative improvement."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-009",
+      "focus": "Citation attachment and attribution",
+      "request": "Use $sae to split the literature comparison into two sentences, then retain the present-study sentence. Preserve attribution and citations. Return only the edited text.",
+      "context": "Introduction passage containing two literature findings and one finding from the present study.",
+      "source": "Lee et al. [12] reported an increase in X in material A, whereas Chen et al. [13] reported a decrease in Y in material B. In our study, Z did not change (Fig. 2).",
+      "checks": [
+        "Lee/[12] supports increased X in material A.",
+        "Chen/[13] supports decreased Y in material B.",
+        "The present study/Fig. 2 supports unchanged Z.",
+        "The literature comparison is split into two sentences as requested, each retaining its own attribution and citation."
+      ],
+      "forbidden": [
+        "Merging citations so either appears to support both literature findings.",
+        "Attributing a prior finding to the present authors, or the present finding to a cited author.",
+        "Dropping the negation on Z."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-010",
+      "focus": "Non-significance and reported precision",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Results section.",
+      "source": "No statistically significant difference was detected between the groups (p = 0.080; 95% CI, -0.12 to 0.03).",
+      "checks": [
+        "The result remains a failure to detect a statistically significant difference.",
+        "The p-value, trailing zero, interval bounds, signs, and 95% level remain."
+      ],
+      "forbidden": [
+        "Claiming equivalence, identical outcomes, no effect, or proof of absence.",
+        "Rounding the p-value or changing its operator."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-011",
+      "focus": "Independent restrictions and negation scope",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Discussion section.",
+      "source": "In this exploratory sample, the method may reduce error under low-noise conditions. Not all participants completed at least three sessions.",
+      "checks": [
+        "Exploratory-sample scope, uncertainty, and low-noise conditions all remain attached to the reduction claim.",
+        "Not all and at least three retain their logical scope."
+      ],
+      "forbidden": [
+        "Dropping restrictions to retain only one qualifier.",
+        "Changing not all into none, all, or an unsupported number of participants.",
+        "Moving the conditions out of this supplied passage."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-012",
+      "focus": "Typography without data changes",
+      "request": "Use $sae to edit this Methods passage and standardize spacing. Return only the edited text.",
+      "context": "The reported values and their precision must be preserved.",
+      "source": "Samples received 5mg of reagent at 0.050mol/L for 24h. The prespecified threshold was p < 0.050.",
+      "checks": [
+        "Spacing may be standardized to 5 mg, 0.050 mol/L, and 24 h.",
+        "Values, precision, units, duration, and the less-than operator remain unchanged."
+      ],
+      "forbidden": [
+        "Converting units, rounding, or changing p < 0.050 to an equality.",
+        "Changing the reported threshold."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-013",
+      "focus": "Reviewer response action status",
+      "request": "Use $sae to edit the following passage. Return the edited text followed by necessary author queries only.",
+      "context": "Response to a reviewer. The extra experiments are planned and have not been performed; no revised page numbers are supplied.",
+      "source": "We plans to repeat the experiment and will report the results in the revised manuscript.",
+      "checks": [
+        "Plans is corrected to plan.",
+        "Both the experiment and reporting remain future actions."
+      ],
+      "forbidden": [
+        "Claiming the experiment has been completed or results have already been added.",
+        "Inventing results, page numbers, line numbers, or a manuscript revision."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-014",
+      "focus": "LaTeX structure and citations",
+      "request": "Use $sae to edit the English in this LaTeX excerpt. Return only the edited source.",
+      "context": "Preserve commands, labels, citation keys, math, and numerical values.",
+      "source": "As shown in Fig.~\\ref{fig:ablation}, model A achieve an accuracy of $87.4\\%$ under the conditions in Eq.~\\eqref{eq:noise} \\cite{lee2024}.",
+      "checks": [
+        "Achieve is corrected to achieves.",
+        "The commands and keys fig:ablation, eq:noise, and lee2024 remain intact.",
+        "87.4% remains the accuracy of model A under the cited conditions."
+      ],
+      "forbidden": [
+        "Removing or damaging the LaTeX commands, math delimiters, or escaped percent sign.",
+        "Reassigning the reference or changing the value."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-015",
+      "focus": "Explicitly authorized scientific correction",
+      "request": "Use $sae to edit this sentence. As the author, I confirm that the oxidation mechanism is an untested hypothesis. I explicitly authorize revising that mechanism claim to express possibility. Return only the revised sentence.",
+      "context": "The improvement in durability was observed. The mechanism was not established.",
+      "source": "The coating improves durability by preventing oxidation.",
+      "checks": [
+        "The observed durability improvement is retained as an observation.",
+        "The mechanism is revised to express possibility under the explicit authorization.",
+        "The response contains only the revised sentence."
+      ],
+      "forbidden": [
+        "Refusing the authorized correction or asking for permission again.",
+        "Leaving the mechanism asserted as established.",
+        "Inventing another mechanism or downgrading the observed durability improvement."
+      ],
+      "query": "none",
+      "query_topics": []
+    },
+    {
+      "id": "SAE-016",
+      "focus": "A genuinely blocked transformation",
+      "request": "Use $sae to turn this fragment into a complete, scientifically specific comparison sentence. Do not use placeholders or omit the comparator.",
+      "context": "No additional scientific information is available.",
+      "source": "Higher.",
+      "checks": [
+        "The response requests the missing comparison information before producing a sentence.",
+        "It asks at least what is higher and relative to what, without inventing values or entities."
+      ],
+      "forbidden": [
+        "Inventing a model, group, metric, comparator, condition, or result.",
+        "Pretending that the unchanged fragment completes the requested transformation."
+      ],
+      "query": "clarify-first",
+      "query_topics": [
+        "The entity or metric that is higher and its comparator."
+      ]
+    }
+  ]
+}

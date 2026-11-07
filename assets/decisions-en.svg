@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="176" viewBox="0 0 920 176" role="img" aria-labelledby="title desc">
+<title id="title">Choosing an edit</title>
+<desc id="desc">Edit language directly, query concrete conflicts when allowed, and preserve a claim when context is missing.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="920" height="176" fill="var(--paper)"/>
+<text x="2" y="88" fill="var(--ink)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="24" dominant-baseline="central" font-style="italic">Editorial judgement</text>
+<path d="M220 88C264.28 88 261.0 36 302 36" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="302" cy="36" r="3.4" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="323" y="36" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" dominant-baseline="central">Language only</text>
+<text x="629" y="36" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="26" dominant-baseline="central">Edit directly</text>
+<path d="M547 36L599 36" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M220 88C264.28 88 261.0 88 302 88" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="302" cy="88" r="3.4" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="323" y="88" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" dominant-baseline="central">Conflicting evidence</text>
+<text x="629" y="88" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="26" dominant-baseline="central">Ask the author</text>
+<path d="M547 88L599 88" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M220 88C264.28 88 261.0 140 302 140" fill="none" stroke="var(--graph)" stroke-width="1" opacity="1" stroke-linecap="round"/>
+<circle cx="302" cy="140" r="3.4" fill="var(--paper)" stroke="var(--graph)" stroke-width="1.5"/>
+<text x="323" y="140" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" dominant-baseline="central">Missing context</text>
+<text x="629" y="140" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="26" dominant-baseline="central">Keep the claim</text>
+<path d="M547 140L599 140" stroke="var(--hair)" stroke-width="1" fill="none"/>
+</svg>

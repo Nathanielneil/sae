@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="180" viewBox="0 0 920 180" role="img" aria-labelledby="title desc">
+<title id="title">Test-cohort accuracy</title>
+<desc id="desc">Illustrative values on identical 0 to 100 percent scales: proposed method 87.4%, baseline model 81.2%.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="920" height="180" fill="var(--paper)"/>
+<text x="460.0" y="32" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="19" text-anchor="middle">Accuracy in the test cohort</text>
+<text x="215.0" y="101" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="59" text-anchor="middle">87.4%</text>
+<text x="215.0" y="131" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" text-anchor="middle">Proposed method</text>
+<path d="M30.0 159L400.0 159" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M30.0 159L353.38000000000005 159" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="353.38" cy="159" r="3.8" fill="var(--violet)" stroke="var(--violet)" stroke-width="1.5"/>
+<text x="705.0" y="101" fill="var(--ink)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="59" text-anchor="middle">81.2%</text>
+<text x="705.0" y="131" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" text-anchor="middle">Baseline model</text>
+<path d="M520.0 159L890.0 159" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M520.0 159L820.44 159" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="820.44" cy="159" r="3.8" fill="var(--paper)" stroke="var(--soft)" stroke-width="1.5"/>
+</svg>

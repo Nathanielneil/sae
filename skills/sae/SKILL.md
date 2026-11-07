@@ -1,6 +1,6 @@
 ---
 name: sae
-description: Perform standard academic English editing for SCI and other peer-reviewed journal manuscripts while preserving scientific meaning, evidence strength, data, citations, and technical details. Use when asked for SAE, standard academic editing, scientific English polishing, journal-ready language editing, copyediting, or medium-intensity revision of an English title, abstract, manuscript section, response letter, cover letter, figure caption, or full paper. Improve grammar, clarity, concision, cohesion, terminology, and academic style; remove unnecessary defensive or formulaic AI-like prose without deleting evidence-based qualifications. Do not use as a substitute for translation, peer review, fact-checking, or substantive scientific rewriting unless the user separately requests those tasks.
+description: Perform standard academic English editing for scientific manuscripts, abstracts, captions, cover letters, and reviewer responses. Use for SAE, scientific English polishing, or medium-intensity academic copyediting. Improve clarity and flow while preserving scientific claims, evidence strength, data, citations, and scope. Translation, fact-checking, peer review, and substantive scientific revision require a separate request.
 ---
 
 # SAE — Standard Academic Editing
@@ -24,11 +24,29 @@ When unspecified, use these defaults:
 - Structure: preserve headings, paragraph order, citations, and formatting unless a local change is needed for clarity
 - Output: clean edited text followed by concise author queries only when necessary
 
-If the user supplies a target journal or style guide, follow it where it conflicts with these defaults. If the user requests only clean text, provide only clean text.
+Follow supplied or verified journal requirements where they conflict with these defaults; a journal name alone does not establish its current requirements. If the user requests only clean text, provide only clean text and use the ambiguity fallback below.
+
+## Resolve Editing Boundaries
+
+Scientific fidelity takes priority over concision, fluency, and removal of AI-like phrasing. Preserving a claim and correcting it to match the evidence are different tasks. Weakening a claim can change its meaning just as strengthening it can.
+
+- **Edit directly** when the change affects language without changing a scientific proposition: grammar, wordiness, non-substantive emphasis, or genuinely redundant qualifications.
+- **Retain and query** when a proposed correction would delete a mechanism, change causality or certainty, narrow a conclusion, remove a substantive novelty or application claim, or resolve conflicting scientific details. Make safe language edits around the affected content. Follow the clean-text fallback if queries are excluded.
+- **Make a substantive correction only when explicitly authorized**, within the requested scope and using supplied or verified information. A request for polished, concise, or less AI-like prose is not such authorization. Do not invent supporting facts. Keep any necessary scientific revision distinct from ordinary language editing when the requested format permits.
+
+Assess only the evidence available for the editing task:
+
+| Evidence state | Editing decision |
+|---|---|
+| Supplied material supports the claim | Preserve its strength and scope. |
+| Supplied material contradicts or does not justify the stated inference | Preserve the proposition pending author confirmation; identify the specific issue in a query when permitted. |
+| Relevant evidence is not supplied | Treat support as unknown. Do not infer that the claim is false or unsupported in the full manuscript. |
+
+An excerpt is not the entire scientific record. Do not fact-check every statement or routinely query claims merely because their supporting sections are absent. Query when a concrete inconsistency or a necessary edit requires a scientific decision.
 
 ## Protect Scientific Invariants
 
-Preserve exactly unless the user explicitly authorizes a substantive change:
+Preserve the following content and relationships unless the user explicitly authorizes the relevant substantive change:
 
 - Scientific meaning, research questions, hypotheses, and conclusions
 - Numbers, signs, decimal places, sample sizes, dates, doses, durations, and experimental conditions
@@ -37,7 +55,9 @@ Preserve exactly unless the user explicitly authorizes a substantive change:
 - Citations, reference callouts, figure/table labels, section numbering, and cross-references
 - The distinction between established knowledge, observed results, interpretation, and speculation
 
-Do not add data, references, mechanisms, methods, comparisons, implications, novelty claims, or conclusions. Do not silently repair a suspected scientific inconsistency by guessing.
+Preserve numerical values, precision, signs, and comparison operators exactly. Unambiguous typography may change, such as `5mg` to `5 mg`; do not round values, convert units, calculate new differences, or normalize technical names whose identity could change. Protect LaTeX commands, citation keys, equation labels, and other document syntax when editing their surrounding prose.
+
+During SAE, do not add data, references, mechanisms, methods, comparisons, implications, novelty claims, or conclusions. Do not silently repair a suspected scientific inconsistency by guessing.
 
 Preserve the strength of evidence:
 
@@ -45,10 +65,12 @@ Preserve the strength of evidence:
 - Do not turn possibility into certainty.
 - Do not turn a sample-specific result into a general rule.
 - Do not turn statistical significance into practical, clinical, or biological importance.
+- Do not turn a non-significant difference into equivalence, or absence of evidence into evidence of absence.
 - Do not replace `may`, `suggests`, `is consistent with`, or `was associated with` when the qualifier reflects genuine uncertainty.
 - Do not use `significant` to mean merely large, important, or noticeable when statistical significance is not intended.
+- Preserve the scope of negation and quantifiers such as `not`, `only`, `all`, `some`, `at least`, and `at most`.
 
-When a change could alter scientific meaning, keep the safest faithful wording and raise an author query.
+When a necessary edit depends on scientific interpretation, follow the boundary and ambiguity rules rather than choosing the most cautious-sounding interpretation.
 
 ## Apply the Standard Editing Boundary
 
@@ -59,7 +81,7 @@ Make these changes:
 - Clarify ambiguous modifiers, pronouns, comparisons, and sentence relationships when the intended meaning is evident.
 - Shorten wordy sentences, split overloaded sentences, and combine choppy sentences when useful.
 - Improve sentence order and local paragraph cohesion without large-scale restructuring.
-- Remove redundancy, tautology, filler, unnecessary metadiscourse, and unsupported promotional language.
+- Remove redundancy, tautology, filler, unnecessary metadiscourse, and promotional emphasis that carries no independent scientific claim.
 - Use precise nouns and verbs in place of vague wording and excessive nominalization.
 - Standardize terminology, abbreviations, capitalization, hyphenation, English variant, tense, and voice.
 - Preserve an already clear sentence rather than rewriting it merely for stylistic variation.
@@ -73,7 +95,7 @@ Do not automatically:
 - Make every sentence shorter, active, or structurally uniform.
 - Turn the manuscript into generic editorial prose.
 
-If major restructuring or scientific rewriting is needed, finish the safe language edit and identify the need separately instead of silently exceeding SAE scope.
+If major restructuring or scientific rewriting is needed, finish the safe language edit and, when the output format permits, identify the need separately instead of silently exceeding SAE scope.
 
 ## Use an Evidence-Calibrated Editing Workflow
 
@@ -99,9 +121,9 @@ Avoid mechanical shortening. A longer sentence is acceptable when it expresses a
 
 Give each paragraph one primary function. When supported by the original content, prefer this sequence:
 
-`main point → explanation or mechanism → evidence or example → necessary qualification`
+`main point → supporting explanation or evidence → necessary qualification`
 
-Do not bury the main point beneath generic background, disclaimers, or imagined objections. Move a sentence within the same paragraph only when its logical role is clear. Do not impose a topic sentence that overstates the evidence.
+This is a flexible pattern, not a requirement to add a mechanism or move a condition away from its claim. Do not bury the main point beneath generic background or empty disclaimers. Move a sentence within the same paragraph only when its logical role and citation attachments remain clear. Do not impose a topic sentence that overstates the evidence.
 
 ### 4. Remove over-defensive and AI-like prose
 
@@ -125,18 +147,18 @@ Do not ban these forms mechanically. Retain or replace them when they mark a nec
 Apply these tests:
 
 1. **Deletion test:** If removing the phrase changes neither the claim nor the logic, remove it.
-2. **Real-objection test:** If a disclaimer answers no misconception raised by the literature, reviewer, study design, or surrounding argument, omit it.
-3. **Information test:** Replace statements about the author's cautious attitude with specific information about the object, condition, mechanism, or result.
-4. **Hedge test:** Keep one sufficient qualifier; remove stacked expressions such as `may potentially suggest`.
+2. **Scope test:** Remove an empty defensive preface, but retain any substantive restriction on inference, generalization, or application. Missing surrounding context is not a reason to discard it.
+3. **Information test:** Prefer specific information already supplied about the object, condition, mechanism, or result over statements about the author's cautious attitude. Do not invent the missing information.
+4. **Hedge test:** Remove semantically redundant qualifications, not qualifiers counted above a fixed limit. Preserve each independent uncertainty, population, time, or condition restriction and its scope.
 5. **Contrast test:** Use `however`, `although`, `rather than`, or `not X but Y` only when a genuine contrast, exclusion, correction, or shift in emphasis exists.
 
-Do not attach a limitation to every claim. Concentrate necessary limitations where they affect interpretation, especially in the Discussion or limitations section.
+Do not add a generic limitation to every claim. Keep necessary qualifications attached to the claims they limit, including in standalone titles, abstracts, and captions. Broader limitations may be consolidated only when their meaning and reach remain unchanged.
 
 ### 5. Calibrate tone and claims
 
-Remove or qualify promotional and vague language such as `groundbreaking`, `novel`, `remarkable`, `obviously`, `clearly`, `undoubtedly`, `of great significance`, `plays a vital role`, `provides a new perspective`, and `has broad application prospects` unless the text supplies a precise and defensible basis.
+Remove empty emphasis such as `obviously`, `clearly`, or `remarkable` only when it has no independent scientific meaning. Do not treat a word list as a deletion rule: `novel`, a mechanism, or an application statement can carry a substantive proposition. If correcting it would change the claim, retain it and query when warranted under the evidence-state rules. Never silently downgrade a claim merely because the supplied excerpt lacks its supporting evidence.
 
-Prefer an observable comparison or result over self-evaluation. For example, replace a generic claim of “superior performance” with the stated metric and comparator when both already appear in the source text. Never invent the missing metric or comparator.
+Prefer an observable comparison or result over empty self-evaluation when both express the same proposition. Use only metrics and comparators already supplied. Replacing a broad superiority claim with one narrow metric is a substantive change if it removes part of the author's claim; query or obtain authorization instead.
 
 ### 6. Run a consistency and fidelity pass
 
@@ -149,9 +171,12 @@ Check:
 - Units, spaces, capitalization, hyphenation, symbols, and statistical notation
 - Citation and figure/table callout preservation
 - Direction and magnitude of reported effects
-- Correspondence between claims and the evidence stated in the supplied text
+- Each value's metric, unit, group or model, comparator, sample size, time point, and experimental condition
+- Each claim's supporting citation or figure/table callout, and its attribution to the present authors or another source
+- Negation, quantifiers, uncertainty, and the scope of each restriction
+- Any concrete conflict between a claim and the supplied evidence, handled through the boundary rules
 
-Compare the edited text with the source before responding. Restore any detail accidentally omitted or altered.
+Compare the edited text with the source before responding. Checking that the same numbers and citation markers remain is insufficient: verify their attachments after splitting, combining, or moving sentences. Restore any detail or relationship accidentally omitted or altered. Do not imply that cited material or absent sections were checked.
 
 ## Apply Section-Specific Priorities
 
@@ -161,7 +186,7 @@ Make the title specific, searchable, and concise. Preserve the study design and 
 
 ### Abstract
 
-Make the objective, methods, main quantitative results, and conclusion easy to locate. Preserve all values. Remove generic scene-setting and ensure that the conclusion does not exceed the reported evidence.
+Make the objective, methods, main quantitative results, and conclusion easy to locate. Preserve all values and necessary scope restrictions. Remove generic scene-setting. Flag a conclusion that exceeds the supplied evidence rather than silently rewriting the scientific conclusion.
 
 ### Introduction
 
@@ -177,19 +202,23 @@ Report observations objectively and preserve values and statistical meaning. Avo
 
 ### Discussion
 
-Separate findings, interpretation, comparison with prior work, limitations, and implications. Retain evidence-based uncertainty. Remove repetitive result summaries and speculative mechanisms not already identified as speculation.
+Clarify the relationships among findings, interpretation, prior work, limitations, and implications. Retain uncertainty and substantive mechanisms. If a mechanism is asserted as established but the supplied material identifies it as untested, query its status; do not delete it or silently add uncertainty. Remove only genuine repetition that carries no distinct interpretive role.
 
 ### Conclusion
 
-State the supported take-home finding concisely. Do not expand clinical, industrial, policy, or societal implications beyond the study's scope.
+State the author's take-home finding concisely without changing its strength or scope. Handle apparent overreach through the boundary rules; do not expand or silently narrow clinical, industrial, policy, or societal implications.
 
 ### Captions, cover letters, and response letters
 
-For captions, prioritize self-contained identification and preserve labels. For cover letters, use restrained professional persuasion without inflated novelty. For reviewer responses, preserve a respectful tone and explicitly connect each response to the corresponding change; do not weaken a necessary rebuttal through excessive deference.
+For captions, clarify identification using supplied information and preserve labels. For cover letters, use restrained professional persuasion without adding novelty claims. For reviewer responses, preserve respectful tone and necessary rebuttals. Link responses to changes only when those changes are supplied; do not invent experiments, locations, or completed actions, or turn a planned revision into a completed one.
 
 ## Handle Ambiguity and Author Queries
 
-Do not interrupt the edit for a non-blocking ambiguity. Use the least committal faithful revision and add a concise query after the edited text.
+Do not interrupt the edit for a non-blocking ambiguity. Make any revision that is faithful under all plausible readings; otherwise preserve the ambiguous span and edit safely around it. A weaker assertion is not automatically a faithful revision.
+
+- **Queries allowed:** finish the safe edit, then ask only the specific questions needed to resolve scientific ambiguity or a concrete inconsistency. Retain affected content pending confirmation.
+- **Clean text only:** return only the edited text. Preserve unresolved content, including its ambiguity, rather than guessing, weakening it, deleting it, or inserting comments. Query suppression changes presentation, not editing authority.
+- **Task genuinely blocked:** if the requested transformation cannot be completed at all without choosing a scientific meaning, request the minimum clarification before producing it. A local ambiguity in an otherwise editable manuscript is not a blocker.
 
 Raise a query only when author confirmation could change the scientific meaning or correctness, including:
 
@@ -198,8 +227,9 @@ Raise a query only when author confirmation could change the scientific meaning 
 - A sentence supporting multiple materially different interpretations
 - A missing element that prevents grammatical repair without guessing
 - An apparent mismatch among the supplied text, table, figure, or citation callouts
+- A proposed correction to a substantive claim that requires author confirmation
 
-Do not query ordinary editorial choices. Do not fabricate a correction.
+Do not query ordinary editorial choices or every claim whose external support is unavailable. Do not fabricate a correction. Tie each query to the relevant passage and identify the decision the author needs to make.
 
 ## Return the Result
 
@@ -207,7 +237,7 @@ Follow the user's requested format. Otherwise use:
 
 ### Edited text
 
-Provide a clean, publication-ready version with the original headings and formatting preserved. Do not insert comments or tracked-change markers into the prose.
+Provide a clean language-edited version with the original headings and formatting preserved. Do not insert comments or tracked-change markers into the prose unless requested. Language editing does not certify unresolved scientific claims or journal compliance.
 
 ### Author queries
 
@@ -221,11 +251,14 @@ For a long manuscript edited in parts, maintain a running style sheet internally
 
 Before returning the edit, confirm internally:
 
-- The scientific meaning, evidence strength, and scope are unchanged.
-- No number, unit, citation, symbol, condition, or technical detail was lost or modified.
+- Scientific meaning, evidence strength, and scope are unchanged except for explicitly authorized substantive corrections.
+- No value, precision, sign, unit meaning, citation identity, symbol meaning, condition, or technical detail was lost or changed without authorization; any typography change preserves meaning.
+- Values remain attached to the correct entities and conditions; citations remain attached to the correct claims and sources.
 - Every remaining hedge serves scientific uncertainty or scope.
 - Every contrast represents a real logical relationship.
 - The main point is not delayed by defensive framing.
 - Each paragraph has a clear primary function and advances the manuscript.
 - The prose is grammatical, concise, cohesive, natural, and discipline-appropriate.
-- No new fact, reference, mechanism, or conclusion was introduced.
+- No unsupported fact, reference, mechanism, or conclusion was introduced; ordinary SAE added no scientific content.
+- Unknown support was not treated as evidence against a claim; substantive decisions were not made silently.
+- Unresolved ambiguity was retained or queried according to the requested output format.

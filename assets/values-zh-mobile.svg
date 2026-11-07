@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="164" viewBox="0 0 400 164" role="img" aria-labelledby="title desc">
+<title id="title">测试队列中的准确率</title>
+<desc id="desc">Illustrative values on identical 0 to 100 percent scales: proposed method 87.4%, baseline model 81.2%.</desc>
+<style>
+:root {
+  --paper:#fff; --ink:#302d40; --soft:#625e73;
+  --violet:#634f81; --old:#795e68; --hair:#d9d4e2; --graph:#aa9ebd;
+  --bloom:#e9e4f2; --silk:#a08bb8; --glint:#c6b9d3; --echo:#b9a39c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:#0d1117; --ink:#eeeaf1; --soft:#c0bbc9;
+    --violet:#cfbce6; --old:#d4b7c1; --hair:#494858; --graph:#a699b8;
+    --bloom:#292637; --silk:#88799f; --glint:#ad9ac3; --echo:#ad9596;
+  }
+}
+</style>
+<rect width="400" height="164" fill="var(--paper)"/>
+<text x="200.0" y="26" fill="var(--soft)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="16" text-anchor="middle">测试队列中的准确率</text>
+<text x="95.0" y="83" fill="var(--violet)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="43" text-anchor="middle">87.4%</text>
+<text x="95.0" y="110" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" text-anchor="middle">所提方法</text>
+<path d="M14.0 137L176.0 137" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M14.0 137L155.58800000000002 137" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="155.59" cy="137" r="3.8" fill="var(--violet)" stroke="var(--violet)" stroke-width="1.5"/>
+<text x="305.0" y="83" fill="var(--ink)" font-family="Baskerville,'Iowan Old Style','Palatino Linotype',Georgia,'Songti SC',serif" font-size="43" text-anchor="middle">81.2%</text>
+<text x="305.0" y="110" fill="var(--soft)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" text-anchor="middle">基线模型</text>
+<path d="M224.0 137L386.0 137" stroke="var(--hair)" stroke-width="1" fill="none"/>
+<path d="M224.0 137L355.544 137" stroke="var(--graph)" stroke-width="1.6" fill="none"/>
+<circle cx="355.54" cy="137" r="3.8" fill="var(--paper)" stroke="var(--soft)" stroke-width="1.5"/>
+</svg>
